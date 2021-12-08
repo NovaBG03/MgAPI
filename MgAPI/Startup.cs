@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using MgAPI.Authorization;
+using MgAPI.Data;
 using MgAPI.Helpers;
 using MgAPI.Models;
 using MgAPI.Services;
@@ -32,7 +33,7 @@ namespace MgAPI
         // add services to the DI container
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<DataContext>();
+            services.AddDbContext<Context>();
             services.AddCors();
             services.AddControllers().AddJsonOptions(x =>
             {
@@ -49,7 +50,7 @@ namespace MgAPI
         }
 
         // configure the HTTP request pipeline
-        public void Configure(IApplicationBuilder app, DataContext context)
+        public void Configure(IApplicationBuilder app, Context context)
         {
             createTestUsers(context);
 
@@ -70,13 +71,13 @@ namespace MgAPI
             app.UseEndpoints(x => x.MapControllers());
         }
 
-        private void createTestUsers(DataContext context)
+        private void createTestUsers(Context context)
         {
             // add hardcoded test users to db on startup
             var testUsers = new List<User>
             {
-                new User { Id = 1, FirstName = "Admin", LastName = "User", Username = "admin", PasswordHash = BCryptNet.HashPassword("admin"), Role = Role.Admin },
-                new User { Id = 2, FirstName = "Normal", LastName = "User", Username = "user", PasswordHash = BCryptNet.HashPassword("user"), Role = Role.User }
+                new User { ID = "admin1", Firstname = "Admin", Lastname = "User", Username = "admin", PasswordHash = BCryptNet.HashPassword("admin"), Role = Role.Admin },
+                new User { ID = "user1", Firstname = "Normal", Lastname = "User", Username = "user", PasswordHash = BCryptNet.HashPassword("user"), Role = Role.Moderator }
             };
             context.Users.AddRange(testUsers);
             context.SaveChanges();

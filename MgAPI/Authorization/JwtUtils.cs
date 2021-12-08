@@ -15,7 +15,7 @@ namespace MgAPI.Authorization
     public interface IJwtUtils
     {
         public string GenerateJwtToken(User user);
-        public int? ValidateJwtToken(string token);
+        public string ValidateJwtToken(string token);
     }
 
     public class JwtUtils : IJwtUtils
@@ -34,7 +34,7 @@ namespace MgAPI.Authorization
             var key = Encoding.ASCII.GetBytes(_appSettings.Secret);
             var tokenDescriptor = new SecurityTokenDescriptor
             {
-                Subject = new ClaimsIdentity(new[] { new Claim("id", user.Id.ToString()) }),
+                Subject = new ClaimsIdentity(new[] { new Claim("id", user.ID.ToString()) }),
                 Expires = DateTime.UtcNow.AddDays(7),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
             };
@@ -42,7 +42,7 @@ namespace MgAPI.Authorization
             return tokenHandler.WriteToken(token);
         }
 
-        public int? ValidateJwtToken(string token)
+        public string ValidateJwtToken(string token)
         {
             if (token == null)
                 return null;
@@ -62,7 +62,7 @@ namespace MgAPI.Authorization
                 }, out SecurityToken validatedToken);
 
                 var jwtToken = (JwtSecurityToken)validatedToken;
-                var userId = int.Parse(jwtToken.Claims.First(x => x.Type == "id").Value);
+                var userId = jwtToken.Claims.First(x => x.Type == "id").Value;
 
                 // return user id from JWT token if validation successful
                 return userId;

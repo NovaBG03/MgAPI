@@ -1,4 +1,4 @@
-﻿using MgAPI.AuthModels;
+﻿using MgAPI.JSONModels;
 using MgAPI.Authorization;
 using MgAPI.Helpers;
 using MgAPI.Models;
@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using BCryptNet = BCrypt.Net.BCrypt;
+using MgAPI.Data;
 
 namespace MgAPI.Services
 {
@@ -15,18 +16,20 @@ namespace MgAPI.Services
     {
         AuthenticateResponse Authenticate(AuthenticateRequest model);
         IEnumerable<User> GetAll();
-        User GetById(int id);
+        User GetById(string id);
+        User Create(CreateUserRequest model);
+        User Edit(EditUserRequest model);
+        void Delete(string id);
     }
 
     public class UserService : IUserService
     {
-        private DataContext _context;
+        private Context _context;
         private IJwtUtils _jwtUtils;
         private readonly AppSettings _appSettings;
 
-
         public UserService(
-            DataContext context,
+            Context context,
             IJwtUtils jwtUtils,
             IOptions<AppSettings> appSettings)
         {
@@ -55,11 +58,52 @@ namespace MgAPI.Services
             return _context.Users;
         }
 
-        public User GetById(int id)
+        public User GetById(string id)
         {
             var user = _context.Users.Find(id);
             if (user == null) throw new KeyNotFoundException("User not found");
             return user;
+        }
+
+        public User Create(CreateUserRequest model)
+        {
+            User user = new User
+            {
+                ID = Guid.NewGuid().ToString(),
+                Firstname = model.Firstname,
+                Lastname = model.Lastname,
+                Username = model.Username,
+                Email = model.Email,
+                CreationDate = DateTime.Now,
+                Role = (Role)Enum.Parse(typeof(Role), model.Role),
+                PasswordHash = BCryptNet.HashPassword(model.Password)
+            };
+
+            _context.Users.Add(user);
+            _context.SaveChanges();
+
+            return user;
+        }
+
+        public User Edit(EditUserRequest model)
+        {
+            User user = _context.Users.FirstOrDefault(x => x.ID == model.ID);
+            user.Firstname = model.Firstname;
+            user.Lastname = model.Lastname;
+            user.Username = model.Username;
+            user.Email = model.Email;
+            user.PasswordHash = BCryptNet.HashPassword(model.Password);
+
+            _context.SaveChanges();
+
+            return user;
+        }
+
+        public void Delete(string id)
+        {
+            User user = _context.Users.FirstOrDefault(x => x.ID == id);
+            _context.Users.Remove(user);
+            _context.SaveChanges();
         }
     }
 }

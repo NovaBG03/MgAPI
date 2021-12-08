@@ -27,7 +27,7 @@ namespace MgAPI.Authorization
             if (userId != null)
             {
                 // attach user to context on successful jwt validation
-                context.Items["User"] = userService.GetById(userId.Value);
+                context.Items["User"] = userService.GetById(userId);
             }
 
             await _next(context);

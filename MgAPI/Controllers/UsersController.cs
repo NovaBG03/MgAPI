@@ -1,4 +1,4 @@
-﻿using MgAPI.AuthModels;
+﻿using MgAPI.JSONModels;
 using MgAPI.Authorization;
 using MgAPI.Models;
 using MgAPI.Services;
@@ -30,7 +30,7 @@ namespace MgAPI.Controllers
             return Ok(response);
         }
 
-        [Authorize(Role.Admin)]
+        [Authorize(Role.Admin, Role.Moderator)]
         [HttpGet]
         public IActionResult GetAll()
         {
@@ -38,16 +38,64 @@ namespace MgAPI.Controllers
             return Ok(users);
         }
 
-        [HttpGet("{id:int}")]
-        public IActionResult GetById(int id)
+        [HttpGet("{id}")]
+        public IActionResult GetById(string id)
         {
             // only admins can access other user records
             var currentUser = (User)HttpContext.Items["User"];
-            if (id != currentUser.Id && currentUser.Role != Role.Admin)
+            if (id != currentUser.ID && currentUser.Role != Role.Admin)
                 return Unauthorized(new { message = "Unauthorized" });
 
             var user = _userService.GetById(id);
             return Ok(user);
         }
+
+        [Authorize(Role.Admin)]
+        [HttpPost("[action]")]
+        public IActionResult Create(CreateUserRequest model)
+        {
+            try
+            {
+                User user = _userService.Create(model);
+                return CreatedAtAction("create", user);
+            }
+            catch (Exception e)
+            {
+                return Conflict(e.Message);
+            }   
+        }
+
+        [Authorize(Role.Admin, Role.Moderator)]
+        [HttpPatch("[action]")]
+        public IActionResult Edit(EditUserRequest model)
+        {
+            
+            var currentUser = (User)HttpContext.Items["User"];
+            if (model.ID != currentUser.ID && currentUser.Role != Role.Admin)
+                return Unauthorized(new { message = "Unauthorized" });
+
+            try
+            {
+                User user = _userService.Edit(model);
+                return Ok(user);
+            }
+            catch (Exception e)
+            {
+                return Conflict(e.Message);
+            }
+        }
+
+        [Authorize(Role.Admin)]
+        [HttpDelete("[action]/{id}")]
+        public IActionResult Delete(string id)
+        {
+            var currentUser = (User)HttpContext.Items["User"];
+            if (id == currentUser.ID && currentUser.Role == Role.Admin)
+                return Conflict("Cannot delete admin profile!");
+
+            _userService.Delete(id);
+            return Ok("User deleted successfully!");
+        }
+
     }
 }
