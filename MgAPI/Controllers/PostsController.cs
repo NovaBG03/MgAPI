@@ -13,71 +13,63 @@ namespace MgAPI.Controllers
     [Authorize]
     [ApiController]
     [Route("[controller]")]
-    public class UsersController : ControllerBase
+    public class PostsController : ControllerBase
     {
-        private IUserService _userService;
+        private IPostService _postService;
 
-        public UsersController(IUserService userService)
+        public PostsController(IPostService postService)
         {
-            _userService = userService;
-        }
-
-        [AllowAnonymous]
-        [HttpPost("[action]")]
-        public IActionResult Authenticate(AuthenticateRequest model)
-        {
-            var response = _userService.Authenticate(model);
-            return Ok(response);
+            _postService = postService;
         }
 
         [Authorize(Role.Admin, Role.Moderator)]
         [HttpGet]
         public IActionResult GetAll()
         {
-            var users = _userService.GetAll();
-            return Ok(users);
+            var posts = _postService.GetAll();
+            return Ok(posts);
         }
 
         [HttpGet("{id}")]
         public IActionResult GetById(string id)
         {
-            // only admins can access other user records
+            // only admins can access post records
             var currentUser = (User)HttpContext.Items["User"];
             if (id != currentUser.ID && currentUser.Role != Role.Admin)
                 return Unauthorized(new { message = "Unauthorized" });
 
-            var user = _userService.GetById(id);
-            return Ok(user);
+            var post = _postService.GetById(id);
+            return Ok(post);
         }
 
-        [Authorize(Role.Admin)]
+        [Authorize(Role.Admin, Role.Moderator)]
         [HttpPost("[action]")]
-        public IActionResult Create(CreateUserRequest model)
+        public IActionResult Create(CreatePostRequest model)
         {
             try
             {
-                User user = _userService.Create(model);
-                return CreatedAtAction("create", user);
+                Post post = _postService.Create(model);
+                return CreatedAtAction("create", post);
             }
             catch (Exception e)
             {
                 return Conflict(e.Message);
-            }   
+            }
         }
 
         [Authorize(Role.Admin, Role.Moderator)]
         [HttpPatch("[action]")]
-        public IActionResult Edit(EditUserRequest model)
+        public IActionResult Edit(EditPostRequest model)
         {
-            
+
             var currentUser = (User)HttpContext.Items["User"];
             if (model.ID != currentUser.ID && currentUser.Role != Role.Admin)
                 return Unauthorized(new { message = "Unauthorized" });
 
             try
             {
-                User user = _userService.Edit(model);
-                return Ok(user);
+                Post post = _postService.Edit(model);
+                return Ok(post);
             }
             catch (Exception e)
             {
@@ -85,17 +77,16 @@ namespace MgAPI.Controllers
             }
         }
 
-        [Authorize(Role.Admin)]
+        [Authorize(Role.Admin, Role.Moderator)]
         [HttpDelete("[action]/{id}")]
         public IActionResult Delete(string id)
         {
             var currentUser = (User)HttpContext.Items["User"];
-            if (id == currentUser.ID && currentUser.Role == Role.Admin)
-                return Conflict("Cannot delete admin profile!");
+            if (id != currentUser.ID && currentUser.Role != Role.Admin)
+                return Unauthorized(new { message = "Unauthorized" });
 
-            _userService.Delete(id);
-            return Ok("User deleted successfully!");
+            _postService.Delete(id);
+            return Ok("Post deleted successfully!");
         }
-
     }
 }

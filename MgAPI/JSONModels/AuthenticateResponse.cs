@@ -4,11 +4,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace MgAPI.AuthModels
+namespace MgAPI.JSONModels
 {
     public class AuthenticateResponse
     {
-        public int Id { get; set; }
+        public string ID { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Username { get; set; }
@@ -17,9 +17,9 @@ namespace MgAPI.AuthModels
 
         public AuthenticateResponse(User user, string token)
         {
-            Id = user.Id;
-            FirstName = user.FirstName;
-            LastName = user.LastName;
+            ID = user.ID;
+            FirstName = user.Firstname;
+            LastName = user.Lastname;
             Username = user.Username;
             Role = user.Role;
             Token = token;
