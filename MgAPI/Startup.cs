@@ -18,6 +18,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using BCryptNet = BCrypt.Net.BCrypt;
+using Newtonsoft.Json;
 
 namespace MgAPI
 {
@@ -35,10 +36,13 @@ namespace MgAPI
         {
             services.AddDbContext<Context>();
             services.AddCors();
-            services.AddControllers().AddJsonOptions(x =>
+            services.AddControllers()
+            .AddNewtonsoftJson(options => 
+                options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore)
+            .AddJsonOptions(x =>
             {
                 // serialize enums as strings in api responses (e.g. Role)
-                x.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
+                x.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());             
             });
 
             // configure strongly typed settings object
@@ -47,6 +51,7 @@ namespace MgAPI
             // configure DI for application services
             services.AddScoped<IJwtUtils, JwtUtils>();
             services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IPostService, PostService>();
         }
 
         // configure the HTTP request pipeline

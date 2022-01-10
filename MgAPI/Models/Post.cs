@@ -9,7 +9,7 @@ namespace MgAPI.Models
     public class Post
     {
         [Key]
-        public int ID { get; set; }
+        public string ID { get; set; }
         
         [Required]
         public User Author { get; set; }
