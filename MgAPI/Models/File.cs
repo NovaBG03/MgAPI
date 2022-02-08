@@ -9,7 +9,7 @@ namespace MgAPI.Models
     public class File
     {
         [Key]
-        public int ID { get; set; }
+        public string ID { get; set; }
         
         [Required]
         public Post Post { get; set; }

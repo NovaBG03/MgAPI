@@ -14,9 +14,9 @@ namespace MgAPI.Services
     public interface IFileService
     {
         IEnumerable<File> GetAll();
-        File GetById(int id);
+        File GetById(string id);
         File Create(CreateFileRequest model);
-        void Delete(int id);
+        void Delete(string id);
     }
     public class FileService : IFileService
     {
@@ -39,7 +39,7 @@ namespace MgAPI.Services
             return _context.Files;
         }
 
-        public File GetById(int id)
+        public File GetById(string id)
         {
             var file = _context.Files.Find(id);
             if (file == null) throw new KeyNotFoundException("Post not found");
@@ -51,7 +51,7 @@ namespace MgAPI.Services
             Post post = _context.Posts.FirstOrDefault(x => x.ID == model.PostID);
             File file = new File
             {
-                ID =int.Parse(Guid.NewGuid().ToString()),
+                ID =Guid.NewGuid().ToString(),
                 Post = post,
                 Path = model.Path,
                 Name = model.Name,
@@ -67,7 +67,7 @@ namespace MgAPI.Services
             return file;
         }
 
-        public void Delete(int id)
+        public void Delete(string id)
         {
             File file = _context.Files.FirstOrDefault(x => x.ID == id);
             _context.Files.Remove(file);
