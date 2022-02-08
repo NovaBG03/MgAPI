@@ -22,7 +22,6 @@ namespace MgAPI.Controllers
             _fileService = fileService;
         }
 
-        [Authorize(Role.Admin)]
         [HttpGet]
         public IActionResult GetAll()
         {
@@ -42,7 +41,7 @@ namespace MgAPI.Controllers
             return Ok(file);
         }
 
-        [Authorize(Role.Admin)]
+        [Authorize(Role.Admin, Role.Moderator)]
         [HttpPost("[action]")]
         public IActionResult Create(CreateFileRequest model)
         {
@@ -58,7 +57,7 @@ namespace MgAPI.Controllers
         }
 
 
-        [Authorize(Role.Admin)]
+        [Authorize(Role.Admin, Role.Moderator)]
         [HttpDelete("[action]/{id}")]
         public IActionResult Delete(string id)
         {
