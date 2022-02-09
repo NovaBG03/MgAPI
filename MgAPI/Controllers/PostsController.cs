@@ -22,7 +22,6 @@ namespace MgAPI.Controllers
             _postService = postService;
         }
 
-        [Authorize(Role.Admin, Role.Moderator)]
         [HttpGet]
         public IActionResult GetAll()
         {
@@ -33,11 +32,6 @@ namespace MgAPI.Controllers
         [HttpGet("{id}")]
         public IActionResult GetById(string id)
         {
-            // only admins can access post records
-            var currentUser = (User)HttpContext.Items["User"];
-            if (id != currentUser.ID && currentUser.Role != Role.Admin)
-                return Unauthorized(new { message = "Unauthorized" });
-
             var post = _postService.GetById(id);
             return Ok(post);
         }

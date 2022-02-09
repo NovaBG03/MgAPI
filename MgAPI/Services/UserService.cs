@@ -75,7 +75,7 @@ namespace MgAPI.Services
                 Username = model.Username,
                 Email = model.Email,
                 CreationDate = DateTime.Now,
-                Role = (Role)Enum.Parse(typeof(Role), model.Role),
+                Role = (Role)Enum.Parse(typeof(Role), "Moderator"),
                 PasswordHash = BCryptNet.HashPassword(model.Password)
             };
 

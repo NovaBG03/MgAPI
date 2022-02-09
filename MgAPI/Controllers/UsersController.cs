@@ -38,6 +38,7 @@ namespace MgAPI.Controllers
             return Ok(users);
         }
 
+        [Authorize(Role.Admin, Role.Moderator)]
         [HttpGet("{id}")]
         public IActionResult GetById(string id)
         {
