@@ -9,7 +9,7 @@ namespace MgAPI.Data
 {
     public class Context : DbContext
     {
-        public Context()
+        public Context(DbContextOptions<Context> options) : base(options)
         {
 
         }
@@ -28,7 +28,7 @@ namespace MgAPI.Data
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {
             // in memory database used for simplicity, change to a real db for production applications
-            options.UseInMemoryDatabase("TestDb");
+            // options.UseInMemoryDatabase("TestDb");
         }
 
         public DbSet<User> Users { get; set; }

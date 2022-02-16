@@ -19,6 +19,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using BCryptNet = BCrypt.Net.BCrypt;
 using Newtonsoft.Json;
+using Microsoft.EntityFrameworkCore;
 
 namespace MgAPI
 {
@@ -34,7 +35,8 @@ namespace MgAPI
         // add services to the DI container
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<Context>();
+            services.AddDbContext<Context>(options =>
+            options.UseSqlServer(Configuration.GetConnectionString("ConnectionString"))); 
             services.AddCors();
             services.AddControllers()
             .AddNewtonsoftJson(options => 
