@@ -19,17 +19,18 @@ namespace MgAPI.Services
         User GetById(string id);
         User Create(CreateUserRequest model);
         User Edit(EditUserRequest model);
+        void ChangePassword(string id, ChangePasswordRequest model);
         void Delete(string id);
     }
 
     public class UserService : IUserService
     {
-        private Context _context;
+        private UsersContext _context;
         private IJwtUtils _jwtUtils;
         private readonly AppSettings _appSettings;
 
         public UserService(
-            Context context,
+            UsersContext context,
             IJwtUtils jwtUtils,
             IOptions<AppSettings> appSettings)
         {
@@ -41,7 +42,7 @@ namespace MgAPI.Services
 
         public AuthenticateResponse Authenticate(AuthenticateRequest model)
         {
-            var user = _context.Users.SingleOrDefault(x => x.Username == model.Username);
+            var user = _context.Read(x => x.Username == model.Username);
 
             // validate
             if (user == null || !BCryptNet.Verify(model.Password, user.PasswordHash))
@@ -55,12 +56,12 @@ namespace MgAPI.Services
 
         public IEnumerable<User> GetAll()
         {
-            return _context.Users;
+            return _context.ReadAll();
         }
 
         public User GetById(string id)
         {
-            var user = _context.Users.Find(id);
+            var user = _context.Read(id);
             if (user == null) throw new KeyNotFoundException("User not found");
             return user;
         }
@@ -79,31 +80,44 @@ namespace MgAPI.Services
                 PasswordHash = BCryptNet.HashPassword(model.Password)
             };
 
-            _context.Users.Add(user);
-            _context.SaveChanges();
+            _context.Create(user);
 
             return user;
         }
 
         public User Edit(EditUserRequest model)
         {
-            User user = _context.Users.FirstOrDefault(x => x.ID == model.ID);
+            User user = _context.Read(x => x.ID == model.ID);
             user.Firstname = model.Firstname;
             user.Lastname = model.Lastname;
             user.Username = model.Username;
             user.Email = model.Email;
-            user.PasswordHash = BCryptNet.HashPassword(model.Password);
+            //user.PasswordHash = BCryptNet.HashPassword(model.Password);
 
-            _context.SaveChanges();
+            _context.Update(user);
 
             return user;
+        }
+              
+        public void ChangePassword(string id, ChangePasswordRequest model)
+        {
+            User user = _context.Read(x => x.ID == id);
+
+            if (user.PasswordHash == BCryptNet.HashPassword(model.OldPassword))
+            {
+                user.PasswordHash = BCryptNet.HashPassword(model.NewPassword);
+                _context.Update(user);
+            }
+            else
+            {
+                throw new ArgumentException("Wrong password!");
+            }
         }
 
         public void Delete(string id)
         {
-            User user = _context.Users.FirstOrDefault(x => x.ID == id);
-            _context.Users.Remove(user);
-            _context.SaveChanges();
+            _context.Delete(id);           
         }
+         
     }
 }

@@ -3,80 +3,61 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 
 namespace MgAPI.Data
 {
-    public class UsersContext : IDB<User, string>
+    public class UsersContext : IDB<User>
     {
-        public void Create(User item)
-        {
-            using (Context dbContext = new Context())
-            {
-                dbContext.Users.Add(item);
-                dbContext.SaveChanges();
-            }
-        }
-        public void Delete(string key)
-        {
-            using (Context dbContext = new Context())
-            {
-                User userDB = new User();
-                userDB.ID = key;
-                dbContext.Entry<User>(userDB).State = EntityState.Deleted;
-                dbContext.SaveChanges();
-            }
-        }
-        public ICollection<User> Find(string index)
-        {
-            ICollection<User> userDB;
+        private Context _context;
 
-            using (Context dbContext = new Context())
-            {
-                userDB = dbContext.Users.Where(x => x.ID == index).ToList();
-            }
-            return userDB;
+        public UsersContext(Context context)
+        {
+            _context = context;
         }
+
+        public void Create(User item)
+        {            
+            _context.Users.Add(item);
+
+            _context.SaveChanges();
+        }              
+        
         public User Read(string key)
-        {
-            User userDB;
-            try
-            {
-                using (Context dbContext = new Context())
-                {
-                    userDB = dbContext.Users.Find(key);
-                }
-            }
-            catch (InvalidOperationException)
-            {
-                ArgumentException msg = new ArgumentException();
-                msg.Data.Add("Key", "There is no users with that id!");
-                throw msg;
-            }
-            if (userDB == null)
-            {
-                throw new ArgumentException("There is no users with that id!");
-            }
-            return userDB;
+        {                       
+            return _context.Users.Find(key);
         }
-        public void Update(User item)
+
+        public User Read(Expression<Func<User, bool>> predicate)
         {
-            using (Context dbContext = new Context())
-            {
-                User userDB = dbContext.Users.Find(item.ID);
-                userDB.ID = item.ID;
-                dbContext.SaveChanges();
-            }
+            return _context.Users.SingleOrDefault(predicate);
         }
 
         public ICollection<User> ReadAll()
         {
-            List<User> users;
-            using (Context dbContext = new Context())
-            {
-                users = dbContext.Users.ToList();
-            }
-            return users;
+            return _context.Users.ToList();
+        }
+
+        public ICollection<User> ReadAll(Expression<Func<User, bool>> predicate)
+        {
+            return _context.Users.Where(predicate).ToList();
+        }
+
+        public void Update(User item)
+        {
+            User userToUpdate = _context.Users.Find(item.ID);
+            _context.Entry(userToUpdate).CurrentValues.SetValues(item);
+            
+            _context.SaveChanges();
+        }
+
+        public void Delete(string key)
+        {
+            User userToRemove = _context.Users.FirstOrDefault(x => x.ID == key);
+            _context.Users.Remove(userToRemove);
+
+            _context.SaveChanges();
         }
     }
 }

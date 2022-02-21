@@ -86,6 +86,24 @@ namespace MgAPI.Controllers
             }
         }
 
+        [Authorize(Role.Admin, Role.Moderator)]
+        [HttpPatch("[action]")]
+        public IActionResult ChangePassword(ChangePasswordRequest model)
+        {
+
+            var currentUser = (User)HttpContext.Items["User"];
+
+            try
+            {
+                _userService.ChangePassword(currentUser.ID, model);
+                return Ok("Password updated successfully!");
+            }
+            catch (Exception e)
+            {
+                return Conflict(e.Message);
+            }
+        }
+
         [Authorize(Role.Admin)]
         [HttpDelete("[action]/{id}")]
         public IActionResult Delete(string id)
