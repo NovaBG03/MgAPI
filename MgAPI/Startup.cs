@@ -54,6 +54,7 @@ namespace MgAPI
             services.AddScoped<IJwtUtils, JwtUtils>();
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IPostService, PostService>();
+            services.AddScoped<UsersContext>();
         }
 
         // configure the HTTP request pipeline
