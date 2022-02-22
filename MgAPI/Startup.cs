@@ -35,8 +35,8 @@ namespace MgAPI
         // add services to the DI container
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<Context>(options =>
-            options.UseSqlServer(Configuration.GetConnectionString("ConnectionString"))); 
+            services.AddDbContext<Context>(options => options.UseInMemoryDatabase("TestDb"));
+            //options.UseSqlServer(Configuration.GetConnectionString("ConnectionString"))); 
             services.AddCors();
             services.AddControllers()
             .AddNewtonsoftJson(options => 

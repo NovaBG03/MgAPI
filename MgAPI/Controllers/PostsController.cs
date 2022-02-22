@@ -58,7 +58,7 @@ namespace MgAPI.Controllers
 
             var currentUser = (User)HttpContext.Items["User"];
             if (model.ID != currentUser.ID && currentUser.Role != Role.Admin)
-                return Unauthorized(new { message = "Unauthorized" });
+                return Unauthorized(new JSONMessage("Unauthorized"));
 
             try
             {
@@ -77,10 +77,10 @@ namespace MgAPI.Controllers
         {
             var currentUser = (User)HttpContext.Items["User"];
             if (id != currentUser.ID && currentUser.Role != Role.Admin)
-                return Unauthorized(new { message = "Unauthorized" });
+                return Unauthorized(new JSONMessage("Unauthorized"));
 
             _postService.Delete(id);
-            return Ok("Post deleted successfully!");
+            return Ok(new JSONMessage("Post deleted successfully!"));
         }
     }
 }

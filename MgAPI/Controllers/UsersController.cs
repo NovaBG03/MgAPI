@@ -45,7 +45,7 @@ namespace MgAPI.Controllers
             // only admins can access other user records
             var currentUser = (User)HttpContext.Items["User"];
             if (id != currentUser.ID && currentUser.Role != Role.Admin)
-                return Unauthorized(new { message = "Unauthorized" });
+                return Unauthorized(new JSONMessage("Unauthorized"));
 
             var user = _userService.GetById(id);
             return Ok(user);
@@ -73,7 +73,7 @@ namespace MgAPI.Controllers
             
             var currentUser = (User)HttpContext.Items["User"];
             if (model.ID != currentUser.ID && currentUser.Role != Role.Admin)
-                return Unauthorized(new { message = "Unauthorized" });
+                return Unauthorized(new JSONMessage("Unauthorized"));
 
             try
             {
@@ -96,7 +96,7 @@ namespace MgAPI.Controllers
             try
             {
                 _userService.ChangePassword(currentUser.ID, model);
-                return Ok("Password updated successfully!");
+                return Ok(new JSONMessage("Password updated successfully!"));
             }
             catch (Exception e)
             {
@@ -110,10 +110,10 @@ namespace MgAPI.Controllers
         {
             var currentUser = (User)HttpContext.Items["User"];
             if (id == currentUser.ID && currentUser.Role == Role.Admin)
-                return Conflict("Cannot delete admin profile!");
+                return Conflict(new JSONMessage("Cannot delete admin profile!"));
 
             _userService.Delete(id);
-            return Ok("User deleted successfully!");
+            return Ok(new JSONMessage("User deleted successfully!"));
         }
 
     }

@@ -35,7 +35,7 @@ namespace MgAPI.Controllers
             // only admins can access file records
             var currentUser = (User)HttpContext.Items["User"];
             if (id != currentUser.ID && currentUser.Role != Role.Admin)
-                return Unauthorized(new { message = "Unauthorized" });
+                return Unauthorized(new JSONMessage("Unauthorized"));
 
             var file = _fileService.GetById(id);
             return Ok(file);
@@ -63,10 +63,10 @@ namespace MgAPI.Controllers
         {
             var currentUser = (User)HttpContext.Items["User"];
             if (id != currentUser.ID && currentUser.Role != Role.Admin)
-                return Unauthorized(new { message = "Unauthorized" });
+                return Unauthorized(new JSONMessage("Unauthorized"));
 
             _fileService.Delete(id);
-            return Ok("File deleted successfully!");
+            return Ok(new JSONMessage("File deleted successfully!"));
         }
     }
 }
