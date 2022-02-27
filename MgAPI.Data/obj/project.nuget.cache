@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "80HW7Cg60CUN0TTe5HwySMepcYm+8DLzqkzruDMrL+XdpPoEbQ0f2CMNUWefq7gFQTthOdN7pgNJU7KeysHLyg==",
+  "dgSpecHash": "qTzGo8c0nkH+H2vdUsfnCIKithYy8HdCzDls7aW3G/4ke4PfF3YGgIFODq8qBnvclhGn5CDTpsmd//lH/S3X3A==",
   "success": true,
-  "projectFilePath": "C:\\Users\\MyPC\\source\\repos\\MgAPI\\MgAPI.Data\\MgAPI.Data.csproj",
+  "projectFilePath": "C:\\Users\\MyPC\\Desktop\\MgAPI\\MgAPI\\MgAPI.Data\\MgAPI.Data.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\MyPC\\.nuget\\packages\\bcrypt.net-next\\4.0.2\\bcrypt.net-next.4.0.2.nupkg.sha512",
     "C:\\Users\\MyPC\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\5.0.14\\microsoft.aspnetcore.authentication.jwtbearer.5.0.14.nupkg.sha512",

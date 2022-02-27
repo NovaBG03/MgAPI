@@ -13,11 +13,11 @@ namespace MgAPI.Web.Controllers
     [Authorize]
     [ApiController]
     [Route("[controller]")]
-    public class FilesController : ControllerBase
+    public class WebFilesController : ControllerBase
     {
-        private IFileService _fileService;
+        private IWebFileService _fileService;
 
-        public FilesController(IFileService fileService)
+        public WebFilesController(IWebFileService fileService)
         {
             _fileService = fileService;
         }
@@ -43,11 +43,11 @@ namespace MgAPI.Web.Controllers
 
         [Authorize(Role.Admin, Role.Moderator)]
         [HttpPost("[action]")]
-        public IActionResult Create(CreateFileRequest model)
+        public IActionResult Create(CreateWebFileRequest model)
         {
             try
             {
-                File file = _fileService.Create(model);
+                WebFile file = _fileService.Create(model);
                 return CreatedAtAction("create", file);
             }
             catch (Exception e)

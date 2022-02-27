@@ -55,7 +55,7 @@ namespace MgAPI.Web
             services.AddScoped<IJwtUtils, JwtUtils>();
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IPostService, PostService>();
-            services.AddScoped<IFileService, FileService>();
+            services.AddScoped<IWebFileService, WebFileService>();
             services.AddScoped<UsersContext>();
 
             services.AddControllers();
@@ -82,6 +82,10 @@ namespace MgAPI.Web
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseMiddleware<ErrorHandlerMiddleware>();
+
+            app.UseMiddleware<JwtMiddleware>();
 
             app.UseEndpoints(endpoints =>
             {

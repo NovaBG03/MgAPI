@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\MyPC\\source\\repos\\MgAPI\\MgAPI.Services\\MgAPI.Business.csproj": {}
+    "C:\\Users\\MyPC\\Desktop\\MgAPI\\MgAPI\\MgAPI.Services\\MgAPI.Business.csproj": {}
   },
   "projects": {
-    "C:\\Users\\MyPC\\source\\repos\\MgAPI\\MgAPI.Data\\MgAPI.Data.csproj": {
+    "C:\\Users\\MyPC\\Desktop\\MgAPI\\MgAPI\\MgAPI.Data\\MgAPI.Data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\MyPC\\source\\repos\\MgAPI\\MgAPI.Data\\MgAPI.Data.csproj",
+        "projectUniqueName": "C:\\Users\\MyPC\\Desktop\\MgAPI\\MgAPI\\MgAPI.Data\\MgAPI.Data.csproj",
         "projectName": "MgAPI.Data",
-        "projectPath": "C:\\Users\\MyPC\\source\\repos\\MgAPI\\MgAPI.Data\\MgAPI.Data.csproj",
+        "projectPath": "C:\\Users\\MyPC\\Desktop\\MgAPI\\MgAPI\\MgAPI.Data\\MgAPI.Data.csproj",
         "packagesPath": "C:\\Users\\MyPC\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\MyPC\\source\\repos\\MgAPI\\MgAPI.Data\\obj\\",
+        "outputPath": "C:\\Users\\MyPC\\Desktop\\MgAPI\\MgAPI\\MgAPI.Data\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -102,14 +102,14 @@
         }
       }
     },
-    "C:\\Users\\MyPC\\source\\repos\\MgAPI\\MgAPI.Services\\MgAPI.Business.csproj": {
+    "C:\\Users\\MyPC\\Desktop\\MgAPI\\MgAPI\\MgAPI.Services\\MgAPI.Business.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\MyPC\\source\\repos\\MgAPI\\MgAPI.Services\\MgAPI.Business.csproj",
+        "projectUniqueName": "C:\\Users\\MyPC\\Desktop\\MgAPI\\MgAPI\\MgAPI.Services\\MgAPI.Business.csproj",
         "projectName": "MgAPI.Business",
-        "projectPath": "C:\\Users\\MyPC\\source\\repos\\MgAPI\\MgAPI.Services\\MgAPI.Business.csproj",
+        "projectPath": "C:\\Users\\MyPC\\Desktop\\MgAPI\\MgAPI\\MgAPI.Services\\MgAPI.Business.csproj",
         "packagesPath": "C:\\Users\\MyPC\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\MyPC\\source\\repos\\MgAPI\\MgAPI.Services\\obj\\",
+        "outputPath": "C:\\Users\\MyPC\\Desktop\\MgAPI\\MgAPI\\MgAPI.Services\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -129,8 +129,8 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\Users\\MyPC\\source\\repos\\MgAPI\\MgAPI.Data\\MgAPI.Data.csproj": {
-                "projectPath": "C:\\Users\\MyPC\\source\\repos\\MgAPI\\MgAPI.Data\\MgAPI.Data.csproj"
+              "C:\\Users\\MyPC\\Desktop\\MgAPI\\MgAPI\\MgAPI.Data\\MgAPI.Data.csproj": {
+                "projectPath": "C:\\Users\\MyPC\\Desktop\\MgAPI\\MgAPI\\MgAPI.Data\\MgAPI.Data.csproj"
               }
             }
           }

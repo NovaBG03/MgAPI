@@ -24,7 +24,7 @@ namespace MgAPI.Data.Entities
         [Required]
         public string Description { get; set; }
 
-        public virtual List<File> Files { get; set; }
+        public virtual List<WebFile> Files { get; set; }
 
         public Post()
         {

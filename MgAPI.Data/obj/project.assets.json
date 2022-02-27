@@ -5710,11 +5710,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\MyPC\\source\\repos\\MgAPI\\MgAPI.Data\\MgAPI.Data.csproj",
+      "projectUniqueName": "C:\\Users\\MyPC\\Desktop\\MgAPI\\MgAPI\\MgAPI.Data\\MgAPI.Data.csproj",
       "projectName": "MgAPI.Data",
-      "projectPath": "C:\\Users\\MyPC\\source\\repos\\MgAPI\\MgAPI.Data\\MgAPI.Data.csproj",
+      "projectPath": "C:\\Users\\MyPC\\Desktop\\MgAPI\\MgAPI\\MgAPI.Data\\MgAPI.Data.csproj",
       "packagesPath": "C:\\Users\\MyPC\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\MyPC\\source\\repos\\MgAPI\\MgAPI.Data\\obj\\",
+      "outputPath": "C:\\Users\\MyPC\\Desktop\\MgAPI\\MgAPI\\MgAPI.Data\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

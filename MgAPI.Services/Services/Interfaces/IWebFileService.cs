@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace MgAPI.Business.Services.Interfaces
 {
-    public interface IFileService
+    public interface IWebFileService
     {
-        IEnumerable<File> GetAll();
-        File GetById(string id);
-        File Create(CreateFileRequest model);
+        IEnumerable<WebFile> GetAll();
+        WebFile GetById(string id);
+        WebFile Create(CreateWebFileRequest model);
         void Delete(string id);
     }
 }

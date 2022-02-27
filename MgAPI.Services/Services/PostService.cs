@@ -16,17 +16,10 @@ namespace MgAPI.Business.Services
     public class PostService : IPostService
     {
         private Context _context;
-        private IJwtUtils _jwtUtils;
-        private readonly AppSettings _appSettings;
 
-        public PostService(
-            Context context,
-            IJwtUtils jwtUtils,
-            IOptions<AppSettings> appSettings)
+        public PostService(Context context)
         {
             _context = context;
-            _jwtUtils = jwtUtils;
-            _appSettings = appSettings.Value;
         }
 
         public IEnumerable<Post> GetAll()

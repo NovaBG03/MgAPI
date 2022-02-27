@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MgAPI.Data.Entities
 {
-    public class File
+    public class WebFile
     {
         [Key]
         public string ID { get; set; }
@@ -27,7 +27,7 @@ namespace MgAPI.Data.Entities
         [Required]
         public string Extension { get; set; }
 
-        public File()
+        public WebFile()
         {
 
         }
