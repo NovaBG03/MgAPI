@@ -7,10 +7,8 @@ using System.Threading.Tasks;
 
 namespace MgAPI.Data.Entities
 {
-    public class WebFile
-    {
-        [Key]
-        public string ID { get; set; }
+    public class WebFile : BaseEntity
+    {        
 
         [Required]
         public Post Post { get; set; }
