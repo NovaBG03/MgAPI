@@ -1,23 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\MyPC\\Desktop\\MgAPI\\MgAPI\\MgAPI.Web\\MgAPI.Web.csproj": {}
+    "C:\\Users\\Hris\\Desktop\\MgAPI\\MgAPI\\MgAPI.Web\\MgAPI.Web.csproj": {}
   },
   "projects": {
-    "C:\\Users\\MyPC\\Desktop\\MgAPI\\MgAPI\\MgAPI.Data\\MgAPI.Data.csproj": {
+    "C:\\Users\\Hris\\Desktop\\MgAPI\\MgAPI\\MgAPI.Data\\MgAPI.Data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\MyPC\\Desktop\\MgAPI\\MgAPI\\MgAPI.Data\\MgAPI.Data.csproj",
+        "projectUniqueName": "C:\\Users\\Hris\\Desktop\\MgAPI\\MgAPI\\MgAPI.Data\\MgAPI.Data.csproj",
         "projectName": "MgAPI.Data",
-        "projectPath": "C:\\Users\\MyPC\\Desktop\\MgAPI\\MgAPI\\MgAPI.Data\\MgAPI.Data.csproj",
-        "packagesPath": "C:\\Users\\MyPC\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\MyPC\\Desktop\\MgAPI\\MgAPI\\MgAPI.Data\\obj\\",
+        "projectPath": "C:\\Users\\Hris\\Desktop\\MgAPI\\MgAPI\\MgAPI.Data\\MgAPI.Data.csproj",
+        "packagesPath": "C:\\Users\\Hris\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Hris\\Desktop\\MgAPI\\MgAPI\\MgAPI.Data\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\MyPC\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Hris\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -90,32 +91,44 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "frameworkReferences": {
-            "Microsoft.AspNetCore.App": {
-              "privateAssets": "none"
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[5.0.0, 5.0.0]"
             },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[5.0.0, 5.0.0]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[5.0.0, 5.0.0]"
+            }
+          ],
+          "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\MyPC\\Desktop\\MgAPI\\MgAPI\\MgAPI.Services\\MgAPI.Business.csproj": {
+    "C:\\Users\\Hris\\Desktop\\MgAPI\\MgAPI\\MgAPI.Services\\MgAPI.Business.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\MyPC\\Desktop\\MgAPI\\MgAPI\\MgAPI.Services\\MgAPI.Business.csproj",
+        "projectUniqueName": "C:\\Users\\Hris\\Desktop\\MgAPI\\MgAPI\\MgAPI.Services\\MgAPI.Business.csproj",
         "projectName": "MgAPI.Business",
-        "projectPath": "C:\\Users\\MyPC\\Desktop\\MgAPI\\MgAPI\\MgAPI.Services\\MgAPI.Business.csproj",
-        "packagesPath": "C:\\Users\\MyPC\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\MyPC\\Desktop\\MgAPI\\MgAPI\\MgAPI.Services\\obj\\",
+        "projectPath": "C:\\Users\\Hris\\Desktop\\MgAPI\\MgAPI\\MgAPI.Services\\MgAPI.Business.csproj",
+        "packagesPath": "C:\\Users\\Hris\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Hris\\Desktop\\MgAPI\\MgAPI\\MgAPI.Services\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\MyPC\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Hris\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -129,8 +142,8 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\Users\\MyPC\\Desktop\\MgAPI\\MgAPI\\MgAPI.Data\\MgAPI.Data.csproj": {
-                "projectPath": "C:\\Users\\MyPC\\Desktop\\MgAPI\\MgAPI\\MgAPI.Data\\MgAPI.Data.csproj"
+              "C:\\Users\\Hris\\Desktop\\MgAPI\\MgAPI\\MgAPI.Data\\MgAPI.Data.csproj": {
+                "projectPath": "C:\\Users\\Hris\\Desktop\\MgAPI\\MgAPI\\MgAPI.Data\\MgAPI.Data.csproj"
               }
             }
           }
@@ -192,32 +205,44 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "frameworkReferences": {
-            "Microsoft.AspNetCore.App": {
-              "privateAssets": "none"
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[5.0.0, 5.0.0]"
             },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[5.0.0, 5.0.0]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[5.0.0, 5.0.0]"
+            }
+          ],
+          "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\MyPC\\Desktop\\MgAPI\\MgAPI\\MgAPI.Web\\MgAPI.Web.csproj": {
+    "C:\\Users\\Hris\\Desktop\\MgAPI\\MgAPI\\MgAPI.Web\\MgAPI.Web.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\MyPC\\Desktop\\MgAPI\\MgAPI\\MgAPI.Web\\MgAPI.Web.csproj",
+        "projectUniqueName": "C:\\Users\\Hris\\Desktop\\MgAPI\\MgAPI\\MgAPI.Web\\MgAPI.Web.csproj",
         "projectName": "MgAPI.Web",
-        "projectPath": "C:\\Users\\MyPC\\Desktop\\MgAPI\\MgAPI\\MgAPI.Web\\MgAPI.Web.csproj",
-        "packagesPath": "C:\\Users\\MyPC\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\MyPC\\Desktop\\MgAPI\\MgAPI\\MgAPI.Web\\obj\\",
+        "projectPath": "C:\\Users\\Hris\\Desktop\\MgAPI\\MgAPI\\MgAPI.Web\\MgAPI.Web.csproj",
+        "packagesPath": "C:\\Users\\Hris\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Hris\\Desktop\\MgAPI\\MgAPI\\MgAPI.Web\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\MyPC\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Hris\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -231,11 +256,11 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\Users\\MyPC\\Desktop\\MgAPI\\MgAPI\\MgAPI.Data\\MgAPI.Data.csproj": {
-                "projectPath": "C:\\Users\\MyPC\\Desktop\\MgAPI\\MgAPI\\MgAPI.Data\\MgAPI.Data.csproj"
+              "C:\\Users\\Hris\\Desktop\\MgAPI\\MgAPI\\MgAPI.Data\\MgAPI.Data.csproj": {
+                "projectPath": "C:\\Users\\Hris\\Desktop\\MgAPI\\MgAPI\\MgAPI.Data\\MgAPI.Data.csproj"
               },
-              "C:\\Users\\MyPC\\Desktop\\MgAPI\\MgAPI\\MgAPI.Services\\MgAPI.Business.csproj": {
-                "projectPath": "C:\\Users\\MyPC\\Desktop\\MgAPI\\MgAPI\\MgAPI.Services\\MgAPI.Business.csproj"
+              "C:\\Users\\Hris\\Desktop\\MgAPI\\MgAPI\\MgAPI.Services\\MgAPI.Business.csproj": {
+                "projectPath": "C:\\Users\\Hris\\Desktop\\MgAPI\\MgAPI\\MgAPI.Services\\MgAPI.Business.csproj"
               }
             }
           }
@@ -303,6 +328,24 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[5.0.0, 5.0.0]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Host.win-x64",
+              "version": "[5.0.13, 5.0.13]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[5.0.0, 5.0.0]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[5.0.0, 5.0.0]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -311,7 +354,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     }

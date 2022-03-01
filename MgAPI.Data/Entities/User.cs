@@ -8,10 +8,8 @@ using System.Threading.Tasks;
 
 namespace MgAPI.Data.Entities
 {
-    public class User
+    public class User : BaseEntity
     {
-        [Key]
-        public string ID { get; set; }
 
         [Required]
         public string Firstname { get; set; }

@@ -7,10 +7,8 @@ using System.Threading.Tasks;
 
 namespace MgAPI.Data.Entities
 {
-    public class Post
+    public class Post : BaseEntity
     {
-        [Key]
-        public string ID { get; set; }
 
         [Required]
         public User Author { get; set; }
