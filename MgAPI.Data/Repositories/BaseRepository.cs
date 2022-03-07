@@ -5,10 +5,11 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using MgAPI.Data.Entities;
+using MgAPI.Data.Interfaces;
 
 namespace MgAPI.Data.Repositories
 {
-    public abstract class BaseRepository<T> where T : BaseEntity
+    public abstract class BaseRepository<T> : IBaseRepository<T> where T : BaseEntity
     {
         private readonly Context _context;
 
@@ -43,7 +44,7 @@ namespace MgAPI.Data.Repositories
 
         public void Update(T item)
         {
-            T itemToUpdate = _context.Set<T>().Find(item.Id);
+            T itemToUpdate = _context.Set<T>().Find(item.ID);
             _context.Entry(itemToUpdate).CurrentValues.SetValues(item);
 
             _context.SaveChanges();
@@ -51,7 +52,7 @@ namespace MgAPI.Data.Repositories
 
         public void Delete(string key)
         {
-            T itemToRemove = _context.Set<T>().FirstOrDefault(x => x.Id == key);
+            T itemToRemove = _context.Set<T>().FirstOrDefault(x => x.ID == key);
             _context.Set<T>().Remove(itemToRemove);
 
             _context.SaveChanges();
