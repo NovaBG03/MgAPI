@@ -1554,7 +1554,10 @@
         },
         "runtime": {
           "bin/placeholder/MgAPI.Business.dll": {}
-        }
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
       },
       "MgAPI.Data/1.0.0": {
         "type": "project",
@@ -1575,7 +1578,10 @@
         },
         "runtime": {
           "bin/placeholder/MgAPI.Data.dll": {}
-        }
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
       }
     }
   },
@@ -5759,28 +5765,20 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\user\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
-    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {}
+    "C:\\Users\\nikic\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\user\\Desktop\\MG website\\MgAPI\\MgAPI.Web\\MgAPI.Web.csproj",
+      "projectUniqueName": "C:\\Dev\\MgAPI\\MgAPI.Web\\MgAPI.Web.csproj",
       "projectName": "MgAPI.Web",
-      "projectPath": "C:\\Users\\user\\Desktop\\MG website\\MgAPI\\MgAPI.Web\\MgAPI.Web.csproj",
-      "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\user\\Desktop\\MG website\\MgAPI\\MgAPI.Web\\obj\\",
+      "projectPath": "C:\\Dev\\MgAPI\\MgAPI.Web\\MgAPI.Web.csproj",
+      "packagesPath": "C:\\Users\\nikic\\.nuget\\packages\\",
+      "outputPath": "C:\\Dev\\MgAPI\\MgAPI.Web\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-        "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
-      ],
       "configFilePaths": [
-        "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        "C:\\Users\\nikic\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net5.0"
@@ -5793,11 +5791,11 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "C:\\Users\\user\\Desktop\\MG website\\MgAPI\\MgAPI.Data\\MgAPI.Data.csproj": {
-              "projectPath": "C:\\Users\\user\\Desktop\\MG website\\MgAPI\\MgAPI.Data\\MgAPI.Data.csproj"
+            "C:\\Dev\\MgAPI\\MgAPI.Data\\MgAPI.Data.csproj": {
+              "projectPath": "C:\\Dev\\MgAPI\\MgAPI.Data\\MgAPI.Data.csproj"
             },
-            "C:\\Users\\user\\Desktop\\MG website\\MgAPI\\MgAPI.Services\\MgAPI.Business.csproj": {
-              "projectPath": "C:\\Users\\user\\Desktop\\MG website\\MgAPI\\MgAPI.Services\\MgAPI.Business.csproj"
+            "C:\\Dev\\MgAPI\\MgAPI.Services\\MgAPI.Business.csproj": {
+              "projectPath": "C:\\Dev\\MgAPI\\MgAPI.Services\\MgAPI.Business.csproj"
             }
           }
         }
@@ -5865,6 +5863,24 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
+        "downloadDependencies": [
+          {
+            "name": "Microsoft.AspNetCore.App.Ref",
+            "version": "[5.0.0, 5.0.0]"
+          },
+          {
+            "name": "Microsoft.NETCore.App.Host.win-x64",
+            "version": "[5.0.15, 5.0.15]"
+          },
+          {
+            "name": "Microsoft.NETCore.App.Ref",
+            "version": "[5.0.0, 5.0.0]"
+          },
+          {
+            "name": "Microsoft.WindowsDesktop.App.Ref",
+            "version": "[5.0.0, 5.0.0]"
+          }
+        ],
         "frameworkReferences": {
           "Microsoft.AspNetCore.App": {
             "privateAssets": "none"
@@ -5873,7 +5889,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
       }
     }
   }

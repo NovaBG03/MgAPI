@@ -21,3 +21,15 @@ C:\Users\MyPC\Desktop\MgAPI\MgAPI\MgAPI.Data\obj\Debug\net5.0\MgAPI.Data.csproj.
 C:\Users\MyPC\Desktop\MgAPI\MgAPI\MgAPI.Data\obj\Debug\net5.0\MgAPI.Data.dll
 C:\Users\MyPC\Desktop\MgAPI\MgAPI\MgAPI.Data\obj\Debug\net5.0\ref\MgAPI.Data.dll
 C:\Users\MyPC\Desktop\MgAPI\MgAPI\MgAPI.Data\obj\Debug\net5.0\MgAPI.Data.pdb
+C:\Dev\MgAPI\MgAPI.Data\bin\Debug\net5.0\MgAPI.Data.deps.json
+C:\Dev\MgAPI\MgAPI.Data\bin\Debug\net5.0\MgAPI.Data.dll
+C:\Dev\MgAPI\MgAPI.Data\bin\Debug\net5.0\MgAPI.Data.pdb
+C:\Dev\MgAPI\MgAPI.Data\obj\Debug\net5.0\MgAPI.Data.csproj.AssemblyReference.cache
+C:\Dev\MgAPI\MgAPI.Data\obj\Debug\net5.0\MgAPI.Data.GeneratedMSBuildEditorConfig.editorconfig
+C:\Dev\MgAPI\MgAPI.Data\obj\Debug\net5.0\MgAPI.Data.AssemblyInfoInputs.cache
+C:\Dev\MgAPI\MgAPI.Data\obj\Debug\net5.0\MgAPI.Data.AssemblyInfo.cs
+C:\Dev\MgAPI\MgAPI.Data\obj\Debug\net5.0\MgAPI.Data.csproj.CoreCompileInputs.cache
+C:\Dev\MgAPI\MgAPI.Data\obj\Debug\net5.0\MgAPI.Data.dll
+C:\Dev\MgAPI\MgAPI.Data\obj\Debug\net5.0\refint\MgAPI.Data.dll
+C:\Dev\MgAPI\MgAPI.Data\obj\Debug\net5.0\MgAPI.Data.pdb
+C:\Dev\MgAPI\MgAPI.Data\obj\Debug\net5.0\ref\MgAPI.Data.dll

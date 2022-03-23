@@ -38,7 +38,6 @@ namespace MgAPI.Web
 
             services.AddDbContext<Context>(options => options.UseInMemoryDatabase("TestDb"));
             //options.UseSqlServer(Configuration.GetConnectionString("ConnectionString"))); 
-            services.AddCors();
             services.AddControllers()
             .AddNewtonsoftJson(options =>
                 options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore)
@@ -76,6 +75,11 @@ namespace MgAPI.Web
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "MgAPI.Web v1"));
             }
+
+            app.UseCors(options => options
+                .AllowAnyMethod()
+                .AllowAnyHeader()
+                .AllowAnyOrigin());
 
             app.UseHttpsRedirection();
 
