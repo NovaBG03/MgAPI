@@ -1,25 +1,22 @@
+using MgAPI.Business.Authorization.Interfaces;
 using MgAPI.Business.Services;
 using MgAPI.Business.Services.Interfaces;
 using MgAPI.Data;
 using MgAPI.Data.Entities;
+using MgAPI.Data.Interfaces;
+using MgAPI.Data.Repositories;
 using MgAPI.Services.Authorization;
 using MgAPI.Services.Helpers;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using BCryptNet = BCrypt.Net.BCrypt;
 using System.Text.Json.Serialization;
-using System.Threading.Tasks;
+using BCryptNet = BCrypt.Net.BCrypt;
 
 namespace MgAPI.Web
 {
@@ -50,12 +47,15 @@ namespace MgAPI.Web
             // configure strongly typed settings object
             services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
 
+            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IPostRepository, PostRepository>();
+            services.AddScoped<IWebFileRepository, WebFileRepository>();
+
             // configure DI for application services
             services.AddScoped<IJwtUtils, JwtUtils>();
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IPostService, PostService>();
             services.AddScoped<IWebFileService, WebFileService>();
-            services.AddScoped<UsersContext>();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
@@ -65,9 +65,9 @@ namespace MgAPI.Web
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, Context context)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IUserRepository repository)
         {
-            createTestUsers(context);
+            createTestUsers(repository);
 
             if (env.IsDevelopment())
             {
@@ -97,7 +97,7 @@ namespace MgAPI.Web
             });
         }
 
-        private void createTestUsers(Context context)
+        private void createTestUsers(IUserRepository repository)
         {
             // add hardcoded test users to db on startup
             var testUsers = new List<User>
@@ -105,8 +105,8 @@ namespace MgAPI.Web
                 new User { ID = "admin1", Firstname = "Admin", Lastname = "User", Username = "admin", PasswordHash = BCryptNet.HashPassword("admin"), Role = Role.Admin },
                 new User { ID = "user1", Firstname = "Normal", Lastname = "User", Username = "user", PasswordHash = BCryptNet.HashPassword("user"), Role = Role.Moderator }
             };
-            context.Users.AddRange(testUsers);
-            context.SaveChanges();
+            foreach (var user in testUsers)
+                repository.Create(user);
         }
     }
 }

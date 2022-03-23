@@ -4,9 +4,6 @@ using MgAPI.Data.Entities;
 using MgAPI.Services.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace MgAPI.Web.Controllers
 {
@@ -14,7 +11,7 @@ namespace MgAPI.Web.Controllers
     [Route("[controller]")]
     public class PostsController : ControllerBase
     {
-        private IPostService _postService;
+        private readonly IPostService _postService;
 
         public PostsController(IPostService postService)
         {

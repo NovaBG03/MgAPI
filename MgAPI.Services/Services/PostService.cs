@@ -1,42 +1,41 @@
 ﻿using MgAPI.Business.JSONModels;
 using MgAPI.Business.Services.Interfaces;
-using MgAPI.Data;
 using MgAPI.Data.Entities;
-using MgAPI.Services.Authorization;
-using MgAPI.Services.Helpers;
-using Microsoft.Extensions.Options;
+using MgAPI.Data.Interfaces;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MgAPI.Business.Services
 {
     public class PostService : IPostService
     {
-        private Context _context;
+        private readonly IPostRepository _repository;
+        private readonly IUserRepository _userRepository;
 
-        public PostService(Context context)
+        public PostService(IPostRepository repository, IUserRepository userRepository)
         {
-            _context = context;
+            _repository = repository;
+            _userRepository = userRepository;
         }
 
         public IEnumerable<Post> GetAll()
         {
-            return _context.Posts;
+            return _repository.ReadAll();
         }
 
         public Post GetById(string id)
         {
-            var post = _context.Posts.Find(id);
+            var post = _repository.Read(id);
             if (post == null) throw new KeyNotFoundException("Post not found");
             return post;
         }
 
         public Post Create(CreatePostRequest model)
         {
-            User author = _context.Users.FirstOrDefault(x => x.ID == model.AuthorID);
+            User author = _userRepository.Read(model.AuthorID);
+
+            if (author == null) throw new KeyNotFoundException("User not found");
+
             Post post = new Post
             {
                 ID = Guid.NewGuid().ToString(),
@@ -46,30 +45,32 @@ namespace MgAPI.Business.Services
                 PostDate = DateTime.Now
             };
 
-
-            _context.Posts.Add(post);
             author.Posts.Add(post);
-            _context.SaveChanges();
+
+            _repository.Create(post);
 
             return post;
         }
 
         public Post Edit(EditPostRequest model)
         {
-            Post post = _context.Posts.FirstOrDefault(x => x.ID == model.ID);
+            Post post = _repository.Read(model.ID);
+
+            if (post == null) throw new KeyNotFoundException("Post not found");
+
             post.Title = model.Title;
             post.Description = model.Description;
 
-            _context.SaveChanges();
+            _repository.Update(post);
 
             return post;
         }
 
         public void Delete(string id)
         {
-            Post post = _context.Posts.FirstOrDefault(x => x.ID == id);
-            _context.Posts.Remove(post);
-            _context.SaveChanges();
+            if (!_repository.Exists(id)) throw new KeyNotFoundException("Post not found");
+
+            _repository.Delete(id);
         }
     }
 }

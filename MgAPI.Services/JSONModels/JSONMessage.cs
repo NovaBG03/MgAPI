@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace MgAPI.Business.JSONModels
+﻿namespace MgAPI.Business.JSONModels
 {
     public class JSONMessage
     {

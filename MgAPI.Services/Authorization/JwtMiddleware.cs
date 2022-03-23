@@ -1,11 +1,7 @@
-﻿using MgAPI.Business.Services.Interfaces;
-using MgAPI.Services.Helpers;
+﻿using MgAPI.Business.Authorization.Interfaces;
+using MgAPI.Business.Services.Interfaces;
 using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.Options;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace MgAPI.Services.Authorization
@@ -13,12 +9,10 @@ namespace MgAPI.Services.Authorization
     public class JwtMiddleware
     {
         private readonly RequestDelegate _next;
-        private readonly AppSettings _appSettings;
 
-        public JwtMiddleware(RequestDelegate next, IOptions<AppSettings> appSettings)
+        public JwtMiddleware(RequestDelegate next)
         {
             _next = next;
-            _appSettings = appSettings.Value;
         }
 
         public async Task Invoke(HttpContext context, IUserService userService, IJwtUtils jwtUtils)

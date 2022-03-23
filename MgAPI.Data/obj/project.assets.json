@@ -5704,19 +5704,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\nikic\\.nuget\\packages\\": {}
+    "C:\\Users\\Lenovo 330\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Dev\\MgAPI\\MgAPI.Data\\MgAPI.Data.csproj",
+      "projectUniqueName": "C:\\Users\\Lenovo 330\\source\\repos\\MgAPI\\MgAPI.Data\\MgAPI.Data.csproj",
       "projectName": "MgAPI.Data",
-      "projectPath": "C:\\Dev\\MgAPI\\MgAPI.Data\\MgAPI.Data.csproj",
-      "packagesPath": "C:\\Users\\nikic\\.nuget\\packages\\",
-      "outputPath": "C:\\Dev\\MgAPI\\MgAPI.Data\\obj\\",
+      "projectPath": "C:\\Users\\Lenovo 330\\source\\repos\\MgAPI\\MgAPI.Data\\MgAPI.Data.csproj",
+      "packagesPath": "C:\\Users\\Lenovo 330\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Lenovo 330\\source\\repos\\MgAPI\\MgAPI.Data\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\nikic\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Lenovo 330\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -5789,24 +5789,7 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "downloadDependencies": [
-          {
-            "name": "Microsoft.AspNetCore.App.Ref",
-            "version": "[5.0.0, 5.0.0]"
-          },
-          {
-            "name": "Microsoft.NETCore.App.Ref",
-            "version": "[5.0.0, 5.0.0]"
-          },
-          {
-            "name": "Microsoft.WindowsDesktop.App.Ref",
-            "version": "[5.0.0, 5.0.0]"
-          }
-        ],
         "frameworkReferences": {
-          "Microsoft.AspNetCore.App": {
-            "privateAssets": "none"
-          },
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
           }

@@ -1,23 +1,16 @@
-﻿using MgAPI.Data.Entities;
+﻿using MgAPI.Business.Authorization.Interfaces;
+using MgAPI.Data.Entities;
 using MgAPI.Services.Helpers;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using System;
-using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Security.Claims;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace MgAPI.Services.Authorization
 {
-    public interface IJwtUtils
-    {
-        public string GenerateJwtToken(User user);
-        public string ValidateJwtToken(string token);
-    }
-
     public class JwtUtils : IJwtUtils
     {
         private readonly AppSettings _appSettings;

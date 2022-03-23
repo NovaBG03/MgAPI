@@ -1,35 +1,33 @@
 ﻿using MgAPI.Business.JSONModels;
 using MgAPI.Business.Services.Interfaces;
-using MgAPI.Data;
 using MgAPI.Data.Entities;
-using MgAPI.Services.Authorization;
-using MgAPI.Services.Helpers;
+using MgAPI.Data.Interfaces;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.IO;
+using System.Linq;
 
 namespace MgAPI.Business.Services
 {
     public class WebFileService : IWebFileService
     {
-        private Context _context;
+        private readonly IWebFileRepository _repository;
+        private readonly IPostRepository _postRepository;
 
-        public WebFileService(Context context)
+        public WebFileService(IWebFileRepository repository, IPostRepository postRepository)
         {
-            _context = context;
+            _repository = repository;
+            _postRepository = postRepository;
         }
 
         public IEnumerable<WebFile> GetAll()
         {
-            return _context.Files;
+            return _repository.ReadAll();
         }
 
         public WebFile GetById(string id)
         {
-            var file = _context.Files.Find(id);
+            var file = _repository.Read(id);
             if (file == null) throw new KeyNotFoundException("File not found");
             return file;
         }
@@ -39,10 +37,12 @@ namespace MgAPI.Business.Services
             byte[] fileToUpload = File.ReadAllBytes(model.Localpath);
             string fileName = model.Localpath.Split(@"\").Last();
             string extension = model.Localpath.Split(".").Last();
-            string serverFileName = "file" + _context.Files.Count() + "." + extension;                     
+            string serverFileName = "file" + _repository.ReadAll().Count() + "." + extension;                     
             string serverPath = @"..\MgAPI.Data\Files\" + serverFileName;
+            Post post = _postRepository.Read(model.PostID);
 
-            Post post = _context.Posts.FirstOrDefault(x => x.ID == model.PostID);
+            if (post == null) throw new KeyNotFoundException("Post not found");
+
             WebFile file = new WebFile
             {
                 ID = Guid.NewGuid().ToString(),
@@ -55,21 +55,18 @@ namespace MgAPI.Business.Services
 
             File.WriteAllBytes(serverPath, fileToUpload);
 
-            _context.Files.Add(file);
-            post.Files.Add(file);
-            _context.SaveChanges();
+            _repository.Create(file);
 
             return file;
         }
 
         public void Delete(string id)
         {
-            WebFile fileToDelete = _context.Files.FirstOrDefault(x => x.ID == id);
+            WebFile fileToDelete = _repository.Read(id);
             if (fileToDelete == null) throw new KeyNotFoundException("File not found");
             File.Delete(fileToDelete.Path);
 
-            _context.Files.Remove(fileToDelete);
-            _context.SaveChanges();
+            _repository.Delete(id);
         }
     }
 }

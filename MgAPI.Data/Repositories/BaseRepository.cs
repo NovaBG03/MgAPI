@@ -1,11 +1,9 @@
-﻿using System;
+﻿using MgAPI.Data.Entities;
+using MgAPI.Data.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
-using MgAPI.Data.Entities;
-using MgAPI.Data.Interfaces;
 
 namespace MgAPI.Data.Repositories
 {
@@ -22,16 +20,27 @@ namespace MgAPI.Data.Repositories
             _context.Set<T>().Add(item);
             _context.SaveChanges();
         }
+
         public T Read(string id)
         {
             return _context.Set<T>().Find(id);
-
         }
 
         public T Read(Expression<Func<T, bool>> predicate)
         {
             return _context.Set<T>().SingleOrDefault(predicate);
         }
+
+        public bool Exists(string id)
+        {
+            return _context.Set<T>().Find(id) != null;
+        }
+
+        public bool Exists(Expression<Func<T, bool>> predicate)
+        {
+            return _context.Set<T>().SingleOrDefault(predicate) != null;
+        }
+
         public ICollection<T> ReadAll()
         {
             return _context.Set<T>().ToList();

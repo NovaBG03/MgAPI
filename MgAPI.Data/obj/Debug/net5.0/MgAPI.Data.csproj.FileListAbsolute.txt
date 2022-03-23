@@ -33,3 +33,15 @@ C:\Dev\MgAPI\MgAPI.Data\obj\Debug\net5.0\MgAPI.Data.dll
 C:\Dev\MgAPI\MgAPI.Data\obj\Debug\net5.0\refint\MgAPI.Data.dll
 C:\Dev\MgAPI\MgAPI.Data\obj\Debug\net5.0\MgAPI.Data.pdb
 C:\Dev\MgAPI\MgAPI.Data\obj\Debug\net5.0\ref\MgAPI.Data.dll
+C:\Users\Lenovo 330\Source\Repos\MgAPI\MgAPI.Data\bin\Debug\net5.0\MgAPI.Data.deps.json
+C:\Users\Lenovo 330\Source\Repos\MgAPI\MgAPI.Data\bin\Debug\net5.0\MgAPI.Data.dll
+C:\Users\Lenovo 330\Source\Repos\MgAPI\MgAPI.Data\bin\Debug\net5.0\MgAPI.Data.pdb
+C:\Users\Lenovo 330\Source\Repos\MgAPI\MgAPI.Data\obj\Debug\net5.0\MgAPI.Data.csproj.AssemblyReference.cache
+C:\Users\Lenovo 330\Source\Repos\MgAPI\MgAPI.Data\obj\Debug\net5.0\MgAPI.Data.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Lenovo 330\Source\Repos\MgAPI\MgAPI.Data\obj\Debug\net5.0\MgAPI.Data.AssemblyInfoInputs.cache
+C:\Users\Lenovo 330\Source\Repos\MgAPI\MgAPI.Data\obj\Debug\net5.0\MgAPI.Data.AssemblyInfo.cs
+C:\Users\Lenovo 330\Source\Repos\MgAPI\MgAPI.Data\obj\Debug\net5.0\MgAPI.Data.csproj.CoreCompileInputs.cache
+C:\Users\Lenovo 330\Source\Repos\MgAPI\MgAPI.Data\obj\Debug\net5.0\MgAPI.Data.dll
+C:\Users\Lenovo 330\Source\Repos\MgAPI\MgAPI.Data\obj\Debug\net5.0\refint\MgAPI.Data.dll
+C:\Users\Lenovo 330\Source\Repos\MgAPI\MgAPI.Data\obj\Debug\net5.0\MgAPI.Data.pdb
+C:\Users\Lenovo 330\Source\Repos\MgAPI\MgAPI.Data\obj\Debug\net5.0\ref\MgAPI.Data.dll

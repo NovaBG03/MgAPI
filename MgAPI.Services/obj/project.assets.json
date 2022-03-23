@@ -1553,10 +1553,7 @@
         },
         "runtime": {
           "bin/placeholder/MgAPI.Data.dll": {}
-        },
-        "frameworkReferences": [
-          "Microsoft.AspNetCore.App"
-        ]
+        }
       }
     }
   },
@@ -5734,19 +5731,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\nikic\\.nuget\\packages\\": {}
+    "C:\\Users\\Lenovo 330\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Dev\\MgAPI\\MgAPI.Services\\MgAPI.Business.csproj",
+      "projectUniqueName": "C:\\Users\\Lenovo 330\\source\\repos\\MgAPI\\MgAPI.Services\\MgAPI.Business.csproj",
       "projectName": "MgAPI.Business",
-      "projectPath": "C:\\Dev\\MgAPI\\MgAPI.Services\\MgAPI.Business.csproj",
-      "packagesPath": "C:\\Users\\nikic\\.nuget\\packages\\",
-      "outputPath": "C:\\Dev\\MgAPI\\MgAPI.Services\\obj\\",
+      "projectPath": "C:\\Users\\Lenovo 330\\source\\repos\\MgAPI\\MgAPI.Services\\MgAPI.Business.csproj",
+      "packagesPath": "C:\\Users\\Lenovo 330\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Lenovo 330\\source\\repos\\MgAPI\\MgAPI.Services\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\nikic\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Lenovo 330\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -5760,8 +5757,8 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "C:\\Dev\\MgAPI\\MgAPI.Data\\MgAPI.Data.csproj": {
-              "projectPath": "C:\\Dev\\MgAPI\\MgAPI.Data\\MgAPI.Data.csproj"
+            "C:\\Users\\Lenovo 330\\source\\repos\\MgAPI\\MgAPI.Data\\MgAPI.Data.csproj": {
+              "projectPath": "C:\\Users\\Lenovo 330\\source\\repos\\MgAPI\\MgAPI.Data\\MgAPI.Data.csproj"
             }
           }
         }
@@ -5823,24 +5820,7 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "downloadDependencies": [
-          {
-            "name": "Microsoft.AspNetCore.App.Ref",
-            "version": "[5.0.0, 5.0.0]"
-          },
-          {
-            "name": "Microsoft.NETCore.App.Ref",
-            "version": "[5.0.0, 5.0.0]"
-          },
-          {
-            "name": "Microsoft.WindowsDesktop.App.Ref",
-            "version": "[5.0.0, 5.0.0]"
-          }
-        ],
         "frameworkReferences": {
-          "Microsoft.AspNetCore.App": {
-            "privateAssets": "none"
-          },
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
           }

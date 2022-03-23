@@ -1,39 +1,30 @@
-﻿using MgAPI.Business.Services.Interfaces;
-using MgAPI.Data;
+﻿using MgAPI.Business.Authorization.Interfaces;
+using MgAPI.Business.JSONModels;
+using MgAPI.Business.Services.Interfaces;
 using MgAPI.Data.Entities;
-using MgAPI.Services.Authorization;
+using MgAPI.Data.Interfaces;
 using MgAPI.Services.Helpers;
-using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
 using BCryptNet = BCrypt.Net.BCrypt;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MgAPI.Business.JSONModels;
 
 namespace MgAPI.Business.Services
 {
     public class UserService : IUserService
     {
-        private UsersContext _context;
-        private IJwtUtils _jwtUtils;
-        private readonly AppSettings _appSettings;
+        private readonly IUserRepository _repository;
+        private readonly IJwtUtils _jwtUtils;
 
-        public UserService(
-            UsersContext context,
-            IJwtUtils jwtUtils,
-            IOptions<AppSettings> appSettings)
+        public UserService(IUserRepository repository, IJwtUtils jwtUtils)
         {
-            _context = context;
+            _repository = repository;
             _jwtUtils = jwtUtils;
-            _appSettings = appSettings.Value;
         }
 
 
         public AuthenticateResponse Authenticate(AuthenticateRequest model)
         {
-            var user = _context.Read(x => x.Username == model.Username);
+            var user = _repository.ReadByUsername(model.Username);
 
             // validate
             if (user == null || !BCryptNet.Verify(model.Password, user.PasswordHash))
@@ -47,12 +38,12 @@ namespace MgAPI.Business.Services
 
         public IEnumerable<User> GetAll()
         {
-            return _context.ReadAll();
+            return _repository.ReadAll();
         }
 
         public User GetById(string id)
         {
-            var user = _context.Read(id);
+            var user = _repository.Read(id);
             if (user == null) throw new KeyNotFoundException("User not found");
             return user;
         }
@@ -71,33 +62,37 @@ namespace MgAPI.Business.Services
                 PasswordHash = BCryptNet.HashPassword(model.Password)
             };
 
-            _context.Create(user);
+            _repository.Create(user);
 
             return user;
         }
 
         public User Edit(EditUserRequest model)
         {
-            User user = _context.Read(x => x.ID == model.ID);
+            User user = _repository.Read(model.ID);
+            if (user == null) throw new KeyNotFoundException("User not found");
+
             user.Firstname = model.Firstname;
             user.Lastname = model.Lastname;
             user.Username = model.Username;
             user.Email = model.Email;
             //user.PasswordHash = BCryptNet.HashPassword(model.Password);
 
-            _context.Update(user);
+            _repository.Update(user);
 
             return user;
         }
 
         public void ChangePassword(string id, ChangePasswordRequest model)
         {
-            User user = _context.Read(x => x.ID == id);
+            User user = _repository.Read(id);
+
+            if (user == null) throw new KeyNotFoundException("User not found");
 
             if (user.PasswordHash == BCryptNet.HashPassword(model.OldPassword))
             {
                 user.PasswordHash = BCryptNet.HashPassword(model.NewPassword);
-                _context.Update(user);
+                _repository.Update(user);
             }
             else
             {
@@ -107,7 +102,9 @@ namespace MgAPI.Business.Services
 
         public void Delete(string id)
         {
-            _context.Delete(id);
+            if (!_repository.Exists(id)) throw new KeyNotFoundException("User not found");
+
+            _repository.Delete(id);
         }
 
     }
