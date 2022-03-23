@@ -10,7 +10,6 @@ using System.Threading.Tasks;
 
 namespace MgAPI.Web.Controllers
 {
-    [Authorize]
     [ApiController]
     [Route("[controller]")]
     public class WebFilesController : ControllerBase
