@@ -4,6 +4,8 @@ using MgAPI.Data.Entities;
 using MgAPI.Services.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace MgAPI.Web.Controllers
 {
@@ -11,39 +13,39 @@ namespace MgAPI.Web.Controllers
     [Route("[controller]")]
     public class WebFilesController : ControllerBase
     {
-        private readonly IWebFileService _fileService;
+        private readonly IWebFileService _webFileService;
 
-        public WebFilesController(IWebFileService fileService)
+        public WebFilesController(IWebFileService webFileService)
         {
-            _fileService = fileService;
+            _webFileService = webFileService;
         }
 
         [HttpGet]
         public IActionResult GetAll()
         {
-            var files = _fileService.GetAll();
+            IEnumerable<WebFile> files = _webFileService.GetAll();
             return Ok(files);
         }
 
         [HttpGet("{id}")]
-        public IActionResult GetById(string id)
+        public async Task<IActionResult> GetById(string id)
         {
             // only admins can access file records
-            var currentUser = (User)HttpContext.Items["User"];
+            User currentUser = (User)HttpContext.Items["User"];
             if (id != currentUser.ID && currentUser.Role != Role.Admin)
                 return Unauthorized(new JSONMessage("Unauthorized"));
 
-            var file = _fileService.GetById(id);
+            WebFile file = await _webFileService.GetById(id);
             return Ok(file);
         }
 
         [Authorize(Role.Admin, Role.Moderator)]
         [HttpPost("[action]")]
-        public IActionResult Create(CreateWebFileRequest model)
+        public async Task<IActionResult> Create(CreateWebFileRequest model)
         {
             try
             {
-                WebFile file = _fileService.Create(model);
+                WebFile file = await _webFileService.Create(model);
                 return CreatedAtAction("create", file);
             }
             catch (Exception e)
@@ -55,13 +57,13 @@ namespace MgAPI.Web.Controllers
 
         [Authorize(Role.Admin, Role.Moderator)]
         [HttpDelete("[action]/{id}")]
-        public IActionResult Delete(string id)
+        public async Task<IActionResult> Delete(string id)
         {
-            var currentUser = (User)HttpContext.Items["User"];
+            User currentUser = (User)HttpContext.Items["User"];
             if (id != currentUser.ID && currentUser.Role != Role.Admin)
                 return Unauthorized(new JSONMessage("Unauthorized"));
 
-            _fileService.Delete(id);
+            await _webFileService.Delete(id);
             return Ok(new JSONMessage("File deleted successfully!"));
         }
     }

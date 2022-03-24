@@ -6,6 +6,7 @@ using MgAPI.Data.Interfaces;
 using MgAPI.Services.Helpers;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using BCryptNet = BCrypt.Net.BCrypt;
 
 namespace MgAPI.Business.Services
@@ -24,14 +25,14 @@ namespace MgAPI.Business.Services
 
         public AuthenticateResponse Authenticate(AuthenticateRequest model)
         {
-            var user = _repository.ReadByUsername(model.Username);
+            User user = _repository.ReadByUsername(model.Username);
 
             // validate
             if (user == null || !BCryptNet.Verify(model.Password, user.PasswordHash))
                 throw new AppException("Username or password is incorrect");
 
             // authentication successful so generate jwt token
-            var jwtToken = _jwtUtils.GenerateJwtToken(user);
+            string jwtToken = _jwtUtils.GenerateJwtToken(user);
 
             return new AuthenticateResponse(user, jwtToken);
         }
@@ -41,16 +42,16 @@ namespace MgAPI.Business.Services
             return _repository.ReadAll();
         }
 
-        public User GetById(string id)
+        public async Task<User> GetById(string id)
         {
-            var user = _repository.Read(id);
+            User user = await _repository.Read(id);
             if (user == null) throw new KeyNotFoundException("User not found");
             return user;
         }
 
-        public User Create(CreateUserRequest model)
+        public async Task<User> Create(CreateUserRequest model)
         {
-            User user = new User
+            User user = new()
             {
                 ID = Guid.NewGuid().ToString(),
                 Firstname = model.Firstname,
@@ -62,14 +63,14 @@ namespace MgAPI.Business.Services
                 PasswordHash = BCryptNet.HashPassword(model.Password)
             };
 
-            _repository.Create(user);
+            await _repository.Create(user);
 
             return user;
         }
 
-        public User Edit(EditUserRequest model)
+        public async Task<User> Edit(EditUserRequest model)
         {
-            User user = _repository.Read(model.ID);
+            User user = await _repository.Read(model.ID);
             if (user == null) throw new KeyNotFoundException("User not found");
 
             user.Firstname = model.Firstname;
@@ -78,21 +79,21 @@ namespace MgAPI.Business.Services
             user.Email = model.Email;
             //user.PasswordHash = BCryptNet.HashPassword(model.Password);
 
-            _repository.Update(user);
+            await _repository.Update(user);
 
             return user;
         }
 
-        public void ChangePassword(string id, ChangePasswordRequest model)
+        public async Task ChangePassword(string id, ChangePasswordRequest model)
         {
-            User user = _repository.Read(id);
+            User user = await _repository.Read(id);
 
             if (user == null) throw new KeyNotFoundException("User not found");
 
             if (user.PasswordHash == BCryptNet.HashPassword(model.OldPassword))
             {
                 user.PasswordHash = BCryptNet.HashPassword(model.NewPassword);
-                _repository.Update(user);
+                await _repository.Update(user);
             }
             else
             {
@@ -100,11 +101,11 @@ namespace MgAPI.Business.Services
             }
         }
 
-        public void Delete(string id)
+        public async Task Delete(string id)
         {
-            if (!_repository.Exists(id)) throw new KeyNotFoundException("User not found");
+            if (!await _repository.Exists(id)) throw new KeyNotFoundException("User not found");
 
-            _repository.Delete(id);
+            await _repository.Delete(id);
         }
 
     }

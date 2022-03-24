@@ -17,8 +17,8 @@ namespace MgAPI.Services.Authorization
 
         public async Task Invoke(HttpContext context, IUserService userService, IJwtUtils jwtUtils)
         {
-            var token = context.Request.Headers["Authorization"].FirstOrDefault()?.Split(" ").Last();
-            var userId = jwtUtils.ValidateJwtToken(token);
+            string token = context.Request.Headers["Authorization"].FirstOrDefault()?.Split(" ").Last();
+            string userId = jwtUtils.ValidateJwtToken(token);
             if (userId != null)
             {
                 // attach user to context on successful jwt validation

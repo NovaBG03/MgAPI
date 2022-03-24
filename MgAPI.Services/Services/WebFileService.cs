@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace MgAPI.Business.Services
 {
@@ -25,25 +26,25 @@ namespace MgAPI.Business.Services
             return _repository.ReadAll();
         }
 
-        public WebFile GetById(string id)
+        public async Task<WebFile> GetById(string id)
         {
-            var file = _repository.Read(id);
-            if (file == null) throw new KeyNotFoundException("File not found");
-            return file;
+            WebFile webFile = await _repository.Read(id);
+            if (webFile == null) throw new KeyNotFoundException("File not found");
+            return webFile;
         }
 
-        public WebFile Create(CreateWebFileRequest model)
+        public async Task<WebFile> Create(CreateWebFileRequest model)
         {
-            byte[] fileToUpload = File.ReadAllBytes(model.Localpath);
+            byte[] fileToUpload = await File.ReadAllBytesAsync(model.Localpath);
             string fileName = model.Localpath.Split(@"\").Last();
             string extension = model.Localpath.Split(".").Last();
             string serverFileName = "file" + _repository.ReadAll().Count() + "." + extension;                     
             string serverPath = @"..\MgAPI.Data\Files\" + serverFileName;
-            Post post = _postRepository.Read(model.PostID);
+            Post post = await _postRepository.Read(model.PostID);
 
             if (post == null) throw new KeyNotFoundException("Post not found");
 
-            WebFile file = new WebFile
+            WebFile file = new()
             {
                 ID = Guid.NewGuid().ToString(),
                 Post = post,
@@ -53,20 +54,20 @@ namespace MgAPI.Business.Services
                 Extension = extension,
             };
 
-            File.WriteAllBytes(serverPath, fileToUpload);
+            await File.WriteAllBytesAsync(serverPath, fileToUpload);
 
-            _repository.Create(file);
+            await _repository.Create(file);
 
             return file;
         }
 
-        public void Delete(string id)
+        public async Task Delete(string id)
         {
-            WebFile fileToDelete = _repository.Read(id);
+            WebFile fileToDelete = await _repository.Read(id);
             if (fileToDelete == null) throw new KeyNotFoundException("File not found");
             File.Delete(fileToDelete.Path);
 
-            _repository.Delete(id);
+            await _repository.Delete(id);
         }
     }
 }

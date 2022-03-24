@@ -24,26 +24,17 @@ namespace MgAPI.Services.Helpers
             }
             catch (Exception error)
             {
-                var response = context.Response;
+                HttpResponse response = context.Response;
                 response.ContentType = "application/json";
 
-                switch (error)
+                response.StatusCode = error switch
                 {
-                    case AppException e:
-                        // custom application error
-                        response.StatusCode = (int)HttpStatusCode.BadRequest;
-                        break;
-                    case KeyNotFoundException e:
-                        // not found error
-                        response.StatusCode = (int)HttpStatusCode.NotFound;
-                        break;
-                    default:
-                        // unhandled error
-                        response.StatusCode = (int)HttpStatusCode.InternalServerError;
-                        break;
-                }
+                    AppException => (int)HttpStatusCode.BadRequest,
+                    KeyNotFoundException => (int)HttpStatusCode.NotFound,
+                    _ => (int)HttpStatusCode.InternalServerError
+                };
 
-                var result = JsonSerializer.Serialize(new { message = error?.Message });
+                string result = JsonSerializer.Serialize(new { message = error?.Message });
                 await response.WriteAsync(result);
             }
         }

@@ -1,6 +1,7 @@
 ﻿using MgAPI.Business.JSONModels;
 using MgAPI.Data.Entities;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace MgAPI.Business.Services.Interfaces
 {
@@ -8,10 +9,10 @@ namespace MgAPI.Business.Services.Interfaces
     {
         AuthenticateResponse Authenticate(AuthenticateRequest model);
         IEnumerable<User> GetAll();
-        User GetById(string id);
-        User Create(CreateUserRequest model);
-        User Edit(EditUserRequest model);
-        void ChangePassword(string id, ChangePasswordRequest model);
-        void Delete(string id);
+        Task<User> GetById(string id);
+        Task<User> Create(CreateUserRequest model);
+        Task<User> Edit(EditUserRequest model);
+        Task ChangePassword(string id, ChangePasswordRequest model);
+        Task Delete(string id);
     }
 }

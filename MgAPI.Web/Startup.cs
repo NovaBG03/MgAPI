@@ -67,8 +67,8 @@ namespace MgAPI.Web
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IUserRepository repository)
         {
-            createTestUsers(repository);
-
+            CreateTestUsers(repository);
+           
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -91,21 +91,18 @@ namespace MgAPI.Web
 
             app.UseMiddleware<JwtMiddleware>();
 
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllers();
-            });
+            app.UseEndpoints(endpoints => endpoints.MapControllers());
         }
 
-        private void createTestUsers(IUserRepository repository)
+        private static void CreateTestUsers(IUserRepository repository)
         {
             // add hardcoded test users to db on startup
-            var testUsers = new List<User>
+            List<User> testUsers = new()
             {
                 new User { ID = "admin1", Firstname = "Admin", Lastname = "User", Username = "admin", PasswordHash = BCryptNet.HashPassword("admin"), Role = Role.Admin },
                 new User { ID = "user1", Firstname = "Normal", Lastname = "User", Username = "user", PasswordHash = BCryptNet.HashPassword("user"), Role = Role.Moderator }
             };
-            foreach (var user in testUsers)
+            foreach (User user in testUsers)
                 repository.Create(user);
         }
     }

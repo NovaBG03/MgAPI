@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Threading.Tasks;
 
 namespace MgAPI.Data.Repositories
 {
@@ -15,15 +16,15 @@ namespace MgAPI.Data.Repositories
         {
             _context = context;
         }
-        public void Create(T item)
+        public async Task Create(T item)
         {
-            _context.Set<T>().Add(item);
-            _context.SaveChanges();
+            await _context.Set<T>().AddAsync(item);
+            await _context.SaveChangesAsync();
         }
 
-        public T Read(string id)
+        public async Task<T> Read(string id)
         {
-            return _context.Set<T>().Find(id);
+            return await _context.Set<T>().FindAsync(id);
         }
 
         public T Read(Expression<Func<T, bool>> predicate)
@@ -31,40 +32,40 @@ namespace MgAPI.Data.Repositories
             return _context.Set<T>().SingleOrDefault(predicate);
         }
 
-        public bool Exists(string id)
+        public async Task<bool> Exists(string id)
         {
-            return _context.Set<T>().Find(id) != null;
+            return await Read(id) != null;
         }
 
         public bool Exists(Expression<Func<T, bool>> predicate)
         {
-            return _context.Set<T>().SingleOrDefault(predicate) != null;
+            return Read(predicate) != null;
         }
 
-        public ICollection<T> ReadAll()
+        public IQueryable<T> ReadAll()
         {
-            return _context.Set<T>().ToList();
+            return _context.Set<T>().AsQueryable();
         }
 
-        public ICollection<T> ReadAll(Expression<Func<T, bool>> predicate)
+        public IQueryable<T> ReadAll(Expression<Func<T, bool>> predicate)
         {
-            return _context.Set<T>().Where(predicate).ToList();
+            return _context.Set<T>().Where(predicate);
         }
 
-        public void Update(T item)
+        public async Task Update(T item)
         {
-            T itemToUpdate = _context.Set<T>().Find(item.ID);
+            T itemToUpdate = await Read(item.ID);
             _context.Entry(itemToUpdate).CurrentValues.SetValues(item);
 
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
         }
 
-        public void Delete(string key)
+        public async Task Delete(string key)
         {
-            T itemToRemove = _context.Set<T>().FirstOrDefault(x => x.ID == key);
+            T itemToRemove = await Read(key);
             _context.Set<T>().Remove(itemToRemove);
 
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
         }
     }
 }

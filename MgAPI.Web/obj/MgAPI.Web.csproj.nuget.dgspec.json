@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Lenovo 330\\source\\repos\\MgAPI\\MgAPI.Web\\MgAPI.Web.csproj": {}
+    "C:\\Users\\Lenovo 330\\Source\\Repos\\MgAPI\\MgAPI.Web\\MgAPI.Web.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Lenovo 330\\source\\repos\\MgAPI\\MgAPI.Data\\MgAPI.Data.csproj": {
+    "C:\\Users\\Lenovo 330\\Source\\Repos\\MgAPI\\MgAPI.Data\\MgAPI.Data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Lenovo 330\\source\\repos\\MgAPI\\MgAPI.Data\\MgAPI.Data.csproj",
+        "projectUniqueName": "C:\\Users\\Lenovo 330\\Source\\Repos\\MgAPI\\MgAPI.Data\\MgAPI.Data.csproj",
         "projectName": "MgAPI.Data",
-        "projectPath": "C:\\Users\\Lenovo 330\\source\\repos\\MgAPI\\MgAPI.Data\\MgAPI.Data.csproj",
+        "projectPath": "C:\\Users\\Lenovo 330\\Source\\Repos\\MgAPI\\MgAPI.Data\\MgAPI.Data.csproj",
         "packagesPath": "C:\\Users\\Lenovo 330\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Lenovo 330\\source\\repos\\MgAPI\\MgAPI.Data\\obj\\",
+        "outputPath": "C:\\Users\\Lenovo 330\\Source\\Repos\\MgAPI\\MgAPI.Data\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Lenovo 330\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -96,14 +96,14 @@
         }
       }
     },
-    "C:\\Users\\Lenovo 330\\source\\repos\\MgAPI\\MgAPI.Services\\MgAPI.Business.csproj": {
+    "C:\\Users\\Lenovo 330\\Source\\Repos\\MgAPI\\MgAPI.Services\\MgAPI.Business.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Lenovo 330\\source\\repos\\MgAPI\\MgAPI.Services\\MgAPI.Business.csproj",
+        "projectUniqueName": "C:\\Users\\Lenovo 330\\Source\\Repos\\MgAPI\\MgAPI.Services\\MgAPI.Business.csproj",
         "projectName": "MgAPI.Business",
-        "projectPath": "C:\\Users\\Lenovo 330\\source\\repos\\MgAPI\\MgAPI.Services\\MgAPI.Business.csproj",
+        "projectPath": "C:\\Users\\Lenovo 330\\Source\\Repos\\MgAPI\\MgAPI.Services\\MgAPI.Business.csproj",
         "packagesPath": "C:\\Users\\Lenovo 330\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Lenovo 330\\source\\repos\\MgAPI\\MgAPI.Services\\obj\\",
+        "outputPath": "C:\\Users\\Lenovo 330\\Source\\Repos\\MgAPI\\MgAPI.Services\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Lenovo 330\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -120,8 +120,8 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\Users\\Lenovo 330\\source\\repos\\MgAPI\\MgAPI.Data\\MgAPI.Data.csproj": {
-                "projectPath": "C:\\Users\\Lenovo 330\\source\\repos\\MgAPI\\MgAPI.Data\\MgAPI.Data.csproj"
+              "C:\\Users\\Lenovo 330\\Source\\Repos\\MgAPI\\MgAPI.Data\\MgAPI.Data.csproj": {
+                "projectPath": "C:\\Users\\Lenovo 330\\Source\\Repos\\MgAPI\\MgAPI.Data\\MgAPI.Data.csproj"
               }
             }
           }
@@ -192,14 +192,14 @@
         }
       }
     },
-    "C:\\Users\\Lenovo 330\\source\\repos\\MgAPI\\MgAPI.Web\\MgAPI.Web.csproj": {
+    "C:\\Users\\Lenovo 330\\Source\\Repos\\MgAPI\\MgAPI.Web\\MgAPI.Web.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Lenovo 330\\source\\repos\\MgAPI\\MgAPI.Web\\MgAPI.Web.csproj",
+        "projectUniqueName": "C:\\Users\\Lenovo 330\\Source\\Repos\\MgAPI\\MgAPI.Web\\MgAPI.Web.csproj",
         "projectName": "MgAPI.Web",
-        "projectPath": "C:\\Users\\Lenovo 330\\source\\repos\\MgAPI\\MgAPI.Web\\MgAPI.Web.csproj",
+        "projectPath": "C:\\Users\\Lenovo 330\\Source\\Repos\\MgAPI\\MgAPI.Web\\MgAPI.Web.csproj",
         "packagesPath": "C:\\Users\\Lenovo 330\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Lenovo 330\\source\\repos\\MgAPI\\MgAPI.Web\\obj\\",
+        "outputPath": "C:\\Users\\Lenovo 330\\Source\\Repos\\MgAPI\\MgAPI.Web\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Lenovo 330\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -216,11 +216,11 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\Users\\Lenovo 330\\source\\repos\\MgAPI\\MgAPI.Data\\MgAPI.Data.csproj": {
-                "projectPath": "C:\\Users\\Lenovo 330\\source\\repos\\MgAPI\\MgAPI.Data\\MgAPI.Data.csproj"
+              "C:\\Users\\Lenovo 330\\Source\\Repos\\MgAPI\\MgAPI.Data\\MgAPI.Data.csproj": {
+                "projectPath": "C:\\Users\\Lenovo 330\\Source\\Repos\\MgAPI\\MgAPI.Data\\MgAPI.Data.csproj"
               },
-              "C:\\Users\\Lenovo 330\\source\\repos\\MgAPI\\MgAPI.Services\\MgAPI.Business.csproj": {
-                "projectPath": "C:\\Users\\Lenovo 330\\source\\repos\\MgAPI\\MgAPI.Services\\MgAPI.Business.csproj"
+              "C:\\Users\\Lenovo 330\\Source\\Repos\\MgAPI\\MgAPI.Services\\MgAPI.Business.csproj": {
+                "projectPath": "C:\\Users\\Lenovo 330\\Source\\Repos\\MgAPI\\MgAPI.Services\\MgAPI.Business.csproj"
               }
             }
           }

@@ -4,6 +4,8 @@ using MgAPI.Data.Entities;
 using MgAPI.Services.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace MgAPI.Web.Controllers
 {
@@ -21,24 +23,24 @@ namespace MgAPI.Web.Controllers
         [HttpGet]
         public IActionResult GetAll()
         {
-            var posts = _postService.GetAll();
+            IEnumerable<Post> posts = _postService.GetAll();
             return Ok(posts);
         }
 
         [HttpGet("{id}")]
-        public IActionResult GetById(string id)
+        public async Task<IActionResult> GetById(string id)
         {
-            var post = _postService.GetById(id);
+            Post post = await _postService.GetById(id);
             return Ok(post);
         }
 
         [Authorize(Role.Admin, Role.Moderator)]
         [HttpPost("[action]")]
-        public IActionResult Create(CreatePostRequest model)
+        public async Task<IActionResult> Create(CreatePostRequest model)
         {
             try
             {
-                Post post = _postService.Create(model);
+                Post post = await _postService.Create(model);
                 return CreatedAtAction("create", post);
             }
             catch (Exception e)
@@ -49,16 +51,16 @@ namespace MgAPI.Web.Controllers
 
         [Authorize(Role.Admin, Role.Moderator)]
         [HttpPatch("[action]")]
-        public IActionResult Edit(EditPostRequest model)
+        public async Task<IActionResult >Edit(EditPostRequest model)
         {
 
-            var currentUser = (User)HttpContext.Items["User"];
+            User currentUser = (User)HttpContext.Items["User"];
             if (model.ID != currentUser.ID && currentUser.Role != Role.Admin)
                 return Unauthorized(new JSONMessage("Unauthorized"));
 
             try
             {
-                Post post = _postService.Edit(model);
+                Post post = await _postService.Edit(model);
                 return Ok(post);
             }
             catch (Exception e)
@@ -69,13 +71,13 @@ namespace MgAPI.Web.Controllers
 
         [Authorize(Role.Admin, Role.Moderator)]
         [HttpDelete("[action]/{id}")]
-        public IActionResult Delete(string id)
+        public async Task<IActionResult> Delete(string id)
         {
-            var currentUser = (User)HttpContext.Items["User"];
+            User currentUser = (User)HttpContext.Items["User"];
             if (id != currentUser.ID && currentUser.Role != Role.Admin)
                 return Unauthorized(new JSONMessage("Unauthorized"));
 
-            _postService.Delete(id);
+            await _postService.Delete(id);
             return Ok(new JSONMessage("Post deleted successfully!"));
         }
     }

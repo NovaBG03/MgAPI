@@ -4,6 +4,7 @@ using MgAPI.Data.Entities;
 using MgAPI.Data.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace MgAPI.Business.Services
 {
@@ -23,20 +24,20 @@ namespace MgAPI.Business.Services
             return _repository.ReadAll();
         }
 
-        public Post GetById(string id)
+        public async Task<Post> GetById(string id)
         {
-            var post = _repository.Read(id);
+            Post post = await _repository.Read(id);
             if (post == null) throw new KeyNotFoundException("Post not found");
             return post;
         }
 
-        public Post Create(CreatePostRequest model)
+        public async Task<Post> Create(CreatePostRequest model)
         {
-            User author = _userRepository.Read(model.AuthorID);
+            User author = await _userRepository.Read(model.AuthorID);
 
             if (author == null) throw new KeyNotFoundException("User not found");
 
-            Post post = new Post
+            Post post = new()
             {
                 ID = Guid.NewGuid().ToString(),
                 Author = author,
@@ -47,30 +48,30 @@ namespace MgAPI.Business.Services
 
             author.Posts.Add(post);
 
-            _repository.Create(post);
+            await _repository.Create(post);
 
             return post;
         }
 
-        public Post Edit(EditPostRequest model)
+        public async Task<Post> Edit(EditPostRequest model)
         {
-            Post post = _repository.Read(model.ID);
+            Post post = await _repository.Read(model.ID);
 
             if (post == null) throw new KeyNotFoundException("Post not found");
 
             post.Title = model.Title;
             post.Description = model.Description;
 
-            _repository.Update(post);
+            await _repository.Update(post);
 
             return post;
         }
 
-        public void Delete(string id)
+        public async Task Delete(string id)
         {
-            if (!_repository.Exists(id)) throw new KeyNotFoundException("Post not found");
+            if (!await _repository.Exists(id)) throw new KeyNotFoundException("Post not found");
 
-            _repository.Delete(id);
+            await _repository.Delete(id);
         }
     }
 }
