@@ -33,7 +33,7 @@ namespace MgAPI.Web
         public void ConfigureServices(IServiceCollection services)
         {
 
-            services.AddDbContext<Context>(options => options.UseInMemoryDatabase("TestDb"));
+            services.AddDbContext<Context>();
             //options.UseSqlServer(Configuration.GetConnectionString("ConnectionString"))); 
             services.AddControllers()
             .AddNewtonsoftJson(options =>

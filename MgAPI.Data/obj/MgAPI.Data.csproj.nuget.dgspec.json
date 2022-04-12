@@ -1,20 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Lenovo 330\\Source\\Repos\\MgAPI\\MgAPI.Data\\MgAPI.Data.csproj": {}
+    "C:\\Users\\MyPC\\Desktop\\MgAPI New\\MgAPI\\MgAPI.Data\\MgAPI.Data.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Lenovo 330\\Source\\Repos\\MgAPI\\MgAPI.Data\\MgAPI.Data.csproj": {
+    "C:\\Users\\MyPC\\Desktop\\MgAPI New\\MgAPI\\MgAPI.Data\\MgAPI.Data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Lenovo 330\\Source\\Repos\\MgAPI\\MgAPI.Data\\MgAPI.Data.csproj",
+        "projectUniqueName": "C:\\Users\\MyPC\\Desktop\\MgAPI New\\MgAPI\\MgAPI.Data\\MgAPI.Data.csproj",
         "projectName": "MgAPI.Data",
-        "projectPath": "C:\\Users\\Lenovo 330\\Source\\Repos\\MgAPI\\MgAPI.Data\\MgAPI.Data.csproj",
-        "packagesPath": "C:\\Users\\Lenovo 330\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Lenovo 330\\Source\\Repos\\MgAPI\\MgAPI.Data\\obj\\",
+        "projectPath": "C:\\Users\\MyPC\\Desktop\\MgAPI New\\MgAPI\\MgAPI.Data\\MgAPI.Data.csproj",
+        "packagesPath": "C:\\Users\\MyPC\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\MyPC\\Desktop\\MgAPI New\\MgAPI\\MgAPI.Data\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Lenovo 330\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\MyPC\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

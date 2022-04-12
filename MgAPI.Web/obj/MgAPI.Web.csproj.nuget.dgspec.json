@@ -1,20 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Lenovo 330\\Source\\Repos\\MgAPI\\MgAPI.Web\\MgAPI.Web.csproj": {}
+    "C:\\Users\\MyPC\\Desktop\\MgAPI New\\MgAPI\\MgAPI.Web\\MgAPI.Web.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Lenovo 330\\Source\\Repos\\MgAPI\\MgAPI.Data\\MgAPI.Data.csproj": {
+    "C:\\Users\\MyPC\\Desktop\\MgAPI New\\MgAPI\\MgAPI.Data\\MgAPI.Data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Lenovo 330\\Source\\Repos\\MgAPI\\MgAPI.Data\\MgAPI.Data.csproj",
+        "projectUniqueName": "C:\\Users\\MyPC\\Desktop\\MgAPI New\\MgAPI\\MgAPI.Data\\MgAPI.Data.csproj",
         "projectName": "MgAPI.Data",
-        "projectPath": "C:\\Users\\Lenovo 330\\Source\\Repos\\MgAPI\\MgAPI.Data\\MgAPI.Data.csproj",
-        "packagesPath": "C:\\Users\\Lenovo 330\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Lenovo 330\\Source\\Repos\\MgAPI\\MgAPI.Data\\obj\\",
+        "projectPath": "C:\\Users\\MyPC\\Desktop\\MgAPI New\\MgAPI\\MgAPI.Data\\MgAPI.Data.csproj",
+        "packagesPath": "C:\\Users\\MyPC\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\MyPC\\Desktop\\MgAPI New\\MgAPI\\MgAPI.Data\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Lenovo 330\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\MyPC\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -96,17 +99,20 @@
         }
       }
     },
-    "C:\\Users\\Lenovo 330\\Source\\Repos\\MgAPI\\MgAPI.Services\\MgAPI.Business.csproj": {
+    "C:\\Users\\MyPC\\Desktop\\MgAPI New\\MgAPI\\MgAPI.Services\\MgAPI.Business.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Lenovo 330\\Source\\Repos\\MgAPI\\MgAPI.Services\\MgAPI.Business.csproj",
+        "projectUniqueName": "C:\\Users\\MyPC\\Desktop\\MgAPI New\\MgAPI\\MgAPI.Services\\MgAPI.Business.csproj",
         "projectName": "MgAPI.Business",
-        "projectPath": "C:\\Users\\Lenovo 330\\Source\\Repos\\MgAPI\\MgAPI.Services\\MgAPI.Business.csproj",
-        "packagesPath": "C:\\Users\\Lenovo 330\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Lenovo 330\\Source\\Repos\\MgAPI\\MgAPI.Services\\obj\\",
+        "projectPath": "C:\\Users\\MyPC\\Desktop\\MgAPI New\\MgAPI\\MgAPI.Services\\MgAPI.Business.csproj",
+        "packagesPath": "C:\\Users\\MyPC\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\MyPC\\Desktop\\MgAPI New\\MgAPI\\MgAPI.Services\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Lenovo 330\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\MyPC\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -120,8 +126,8 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\Users\\Lenovo 330\\Source\\Repos\\MgAPI\\MgAPI.Data\\MgAPI.Data.csproj": {
-                "projectPath": "C:\\Users\\Lenovo 330\\Source\\Repos\\MgAPI\\MgAPI.Data\\MgAPI.Data.csproj"
+              "C:\\Users\\MyPC\\Desktop\\MgAPI New\\MgAPI\\MgAPI.Data\\MgAPI.Data.csproj": {
+                "projectPath": "C:\\Users\\MyPC\\Desktop\\MgAPI New\\MgAPI\\MgAPI.Data\\MgAPI.Data.csproj"
               }
             }
           }
@@ -192,17 +198,20 @@
         }
       }
     },
-    "C:\\Users\\Lenovo 330\\Source\\Repos\\MgAPI\\MgAPI.Web\\MgAPI.Web.csproj": {
+    "C:\\Users\\MyPC\\Desktop\\MgAPI New\\MgAPI\\MgAPI.Web\\MgAPI.Web.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Lenovo 330\\Source\\Repos\\MgAPI\\MgAPI.Web\\MgAPI.Web.csproj",
+        "projectUniqueName": "C:\\Users\\MyPC\\Desktop\\MgAPI New\\MgAPI\\MgAPI.Web\\MgAPI.Web.csproj",
         "projectName": "MgAPI.Web",
-        "projectPath": "C:\\Users\\Lenovo 330\\Source\\Repos\\MgAPI\\MgAPI.Web\\MgAPI.Web.csproj",
-        "packagesPath": "C:\\Users\\Lenovo 330\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Lenovo 330\\Source\\Repos\\MgAPI\\MgAPI.Web\\obj\\",
+        "projectPath": "C:\\Users\\MyPC\\Desktop\\MgAPI New\\MgAPI\\MgAPI.Web\\MgAPI.Web.csproj",
+        "packagesPath": "C:\\Users\\MyPC\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\MyPC\\Desktop\\MgAPI New\\MgAPI\\MgAPI.Web\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Lenovo 330\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\MyPC\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -216,11 +225,11 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\Users\\Lenovo 330\\Source\\Repos\\MgAPI\\MgAPI.Data\\MgAPI.Data.csproj": {
-                "projectPath": "C:\\Users\\Lenovo 330\\Source\\Repos\\MgAPI\\MgAPI.Data\\MgAPI.Data.csproj"
+              "C:\\Users\\MyPC\\Desktop\\MgAPI New\\MgAPI\\MgAPI.Data\\MgAPI.Data.csproj": {
+                "projectPath": "C:\\Users\\MyPC\\Desktop\\MgAPI New\\MgAPI\\MgAPI.Data\\MgAPI.Data.csproj"
               },
-              "C:\\Users\\Lenovo 330\\Source\\Repos\\MgAPI\\MgAPI.Services\\MgAPI.Business.csproj": {
-                "projectPath": "C:\\Users\\Lenovo 330\\Source\\Repos\\MgAPI\\MgAPI.Services\\MgAPI.Business.csproj"
+              "C:\\Users\\MyPC\\Desktop\\MgAPI New\\MgAPI\\MgAPI.Services\\MgAPI.Business.csproj": {
+                "projectPath": "C:\\Users\\MyPC\\Desktop\\MgAPI New\\MgAPI\\MgAPI.Services\\MgAPI.Business.csproj"
               }
             }
           }
